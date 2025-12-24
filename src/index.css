@@ -1,0 +1,65 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@theme {
+  /* ===== COLOR PALETTE (Official from Figma) ===== */
+  --color-ui-navy: #4f6280;
+  --color-ui-yellow: #fee0a6;
+  --color-ui-white: #fdf9ef;
+  --color-ui-blue: #2979e9;
+  --color-success: #7dff7d;
+  --color-button-start: #fc7512;
+  --color-button-end: #f85005;
+  --color-text-muted: #5d5856;
+
+  /* Derived Colors */
+  --color-card-border: #dac39b;
+  --color-card-divider: #e6e1d7;
+  --color-progress-track: #31353b;
+
+  /* ===== TYPOGRAPHY ===== */
+  --font-size-game-title: 1.5rem;
+  /* 24px */
+  --font-size-title-01: 1.25rem;
+  /* 20px */
+  --font-size-button: 1.125rem;
+  /* 18px */
+  --font-size-title-02: 1rem;
+  /* 16px */
+  --font-size-desc-01: 0.875rem;
+  /* 14px */
+  --font-size-desc-02: 0.75rem;
+  /* 12px */
+
+  /* ===== SHADOWS ===== */
+  --shadow-card: 0px 2px 4px 0px rgba(0, 0, 0, 0.25);
+  --shadow-card-inset: inset 0px -5px 1px 0px rgba(183, 133, 90, 0.25);
+  --shadow-text: 0px 1px 1px rgba(0, 0, 0, 0.5);
+}
+
+@custom-variant dark (&:is(.dark *));
+
+html,
+body,
+#root {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: rgb(0, 0, 0);
+  height: 100vh;
+  overscroll-behavior: none;
+  overflow: hidden;
+}
+
+* {
+  user-select: none;
+  -webkit-user-select: none;
+  /* Safari */
+  -ms-user-select: none;
+  /* IE/Edge */
+}
+
+input,
+textarea {
+  -webkit-user-select: text;
+}
