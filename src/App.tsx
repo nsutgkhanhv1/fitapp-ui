@@ -10,6 +10,7 @@ import Header from './components/Header';
 import ChatBubble from './components/ChatBubble';
 import ChatMessage from './components/ChatMessage';
 import MissionItem from './components/MissionItem';
+import DashboardPage from './pages/DashboardPage';
 
 // Import actual SVG assets from Figma
 import cameraIcon from './assets/7cf99edef5a85ab32ef94cd44170dc757f68580a.svg';
@@ -33,24 +34,24 @@ const KeyboardButtonFull = () => (
 
 const CheckIcon = () => (
   <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" className="size-full">
-    <path d="M7 8L10.258 10.444C10.677 10.757 11.266 10.696 11.611 10.302L18 3" stroke="#00B521" strokeWidth="2" strokeLinecap="round"/>
-    <path d="M19 10C19 11.881 18.411 13.714 17.316 15.242C16.22 16.771 14.674 17.918 12.893 18.522C11.112 19.127 9.187 19.158 7.387 18.613C5.588 18.067 4.005 16.971 2.86 15.479C1.715 13.987 1.066 12.174 1.005 10.295C0.943 8.415 1.472 6.563 2.517 5C3.562 3.436 5.07 2.239 6.83 1.577C8.59 0.914 10.513 0.82 12.329 1.307" stroke="#00B521" strokeWidth="2" strokeLinecap="round"/>
+    <path d="M7 8L10.258 10.444C10.677 10.757 11.266 10.696 11.611 10.302L18 3" stroke="#00B521" strokeWidth="2" strokeLinecap="round" />
+    <path d="M19 10C19 11.881 18.411 13.714 17.316 15.242C16.22 16.771 14.674 17.918 12.893 18.522C11.112 19.127 9.187 19.158 7.387 18.613C5.588 18.067 4.005 16.971 2.86 15.479C1.715 13.987 1.066 12.174 1.005 10.295C0.943 8.415 1.472 6.563 2.517 5C3.562 3.436 5.07 2.239 6.83 1.577C8.59 0.914 10.513 0.82 12.329 1.307" stroke="#00B521" strokeWidth="2" strokeLinecap="round" />
   </svg>
 );
 
 const CharacterIcon = () => (
-  <img 
-    src={characterImage} 
-    alt="" 
+  <img
+    src={characterImage}
+    alt=""
     className="w-12 h-12 object-cover object-center"
   />
 );
 
 // Small character icon for mission items
 const SmallCharacterIcon = () => (
-  <img 
-    src={characterImage} 
-    alt="" 
+  <img
+    src={characterImage}
+    alt=""
     className="size-5 object-cover object-center rounded-full"
   />
 );
@@ -59,7 +60,13 @@ const App = () => {
   return (
     <div className="min-h-screen bg-orange-200 p-6 overflow-auto">
       <div className="max-w-4xl mx-auto space-y-8">
-        
+
+        {/* Dashboard Page Demo */}
+        <section>
+          <h2 className="text-xl font-bold mb-4 text-gray-800">Dashboard Page</h2>
+          <DashboardPage />
+        </section>
+
         {/* Headers Section */}
         <section>
           <h2 className="text-xl font-bold mb-4 text-gray-800">Headers</h2>

@@ -36,10 +36,43 @@
   --font-size-desc-02: 0.75rem;
   /* 12px */
 
+  /* ===== CUSTOM SPACING ===== */
+  --spacing-4_5: 1.125rem;
+  /* 18px - for progress bar height */
+  --spacing-7_5: 1.875rem;
+  /* 30px - for card header height */
+  --spacing-42: 10.5rem;
+  /* 168px - for card width */
+
   /* ===== SHADOWS ===== */
   --shadow-card: 0px 2px 4px 0px rgba(0, 0, 0, 0.25);
   --shadow-card-inset: inset 0px -5px 1px 0px rgba(183, 133, 90, 0.25);
   --shadow-text: 0px 1px 1px rgba(0, 0, 0, 0.5);
+}
+
+.text-desc-02 {
+  color: var(--color-text-muted);
+  font-size: var(--font-size-desc-02);
+}
+
+.text-desc-01 {
+  font-size: var(--font-size-desc-01);
+}
+
+.text-title-01 {
+  font-size: var(--font-size-title-01);
+}
+
+.text-title-02 {
+  font-size: var(--font-size-title-02);
+}
+
+.text-game-title {
+  font-size: var(--font-size-game-title);
+}
+
+.text-button {
+  font-size: var(--font-size-button);
 }
 
 @custom-variant dark (&:is(.dark *));
