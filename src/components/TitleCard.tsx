@@ -36,7 +36,7 @@ const TitleCard: FC<TitleCardProps> = ({
             <img
               alt=""
               src={imageUrl}
-              className="absolute inset-0 w-full h-full object-cover"
+              className="absolute inset-0 w-full h-full object-contain"
             />
           </div>
 
@@ -55,7 +55,7 @@ const TitleCard: FC<TitleCardProps> = ({
       </div>
 
       {/* Inner shadow overlay for depth effect */}
-      <div className="absolute inset-0 pointer-events-none shadow-card-inset" />
+      <div className="absolute inset-0 pointer-events-none rounded-tl-[20px] rounded-tr-[25px] rounded-bl-[15px] rounded-br-[15px] shadow-card-inset" />
     </div>
   );
 };

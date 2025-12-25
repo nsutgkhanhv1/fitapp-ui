@@ -26,7 +26,7 @@ const MissionCard: FC<MissionCardProps> = ({
     <div className={`flex flex-col items-start relative w-full ${className}`}>
       <div className="relative w-full bg-ui-white border border-solid border-card-border rounded-[20px] shadow-card">
         {/* Header */}
-        <div className="bg-ui-navy h-7.5 w-full rounded-t-[20px] flex items-center justify-center">
+        <div className="bg-ui-navy h-7_5 w-full rounded-t-[20px] flex items-center justify-center">
           <span
             className="text-white text-title-01 font-extrabold text-center leading-none font-['Baloo_2']"
             style={{ textShadow: 'var(--shadow-text)' }}
@@ -45,9 +45,9 @@ const MissionCard: FC<MissionCardProps> = ({
             </p>
 
             <div className="relative w-full mt-0.5">
-              <div className="bg-progress-track h-4.5 rounded-full w-full" />
+              <div className="bg-progress-track h-4_5 rounded-full w-full" />
               <div
-                className="absolute top-0 left-0 h-4.5 rounded-full"
+                className="absolute top-0 left-0 h-4_5 rounded-full"
                 style={{
                   width: `${progressPercentage}%`,
                   background: 'linear-gradient(to bottom, var(--color-button-start), var(--color-button-end))'
@@ -62,7 +62,7 @@ const MissionCard: FC<MissionCardProps> = ({
             <img
               alt="Mission character"
               src={imageUrl}
-              className="absolute max-w-none w-52 object-contain scale-x-[-1] -bottom-6 -right-12 z-10"
+              className="absolute max-w-none w-52 object-contain -bottom-6 -right-12 z-10"
             />
           </div>
 
