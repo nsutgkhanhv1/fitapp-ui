@@ -1,4 +1,5 @@
 import type { FC } from 'react';
+import defaultCharacter from '../assets/4bd713e163291403becacdcca0797fbd05a0cf77.png';
 
 interface MissionCardProps {
   headerTitle?: string;
@@ -16,7 +17,7 @@ const MissionCard: FC<MissionCardProps> = ({
   description = "- Complete 300 Skips -",
   currentProgress = 42,
   maxProgress = 300,
-  imageUrl = "http://localhost:3845/assets/4bd713e163291403becacdcca0797fbd05a0cf77.png",
+  imageUrl = defaultCharacter,
   className = "",
 }) => {
   const progressPercentage = Math.min((currentProgress / maxProgress) * 100, 100);

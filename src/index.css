@@ -16,6 +16,11 @@
   --color-card-border: #dac39b;
   --color-card-divider: #e6e1d7;
   --color-progress-track: #31353b;
+  --color-chat-owned: #dae8ff;
+  --color-button-highlight: #ffc68f;
+  --color-icon-btn-start: #f9f5eb;
+  --color-icon-btn-end: #e9d9c6;
+  --color-dark-text: #1f222b;
 
   /* ===== TYPOGRAPHY ===== */
   --font-size-game-title: 1.5rem;
@@ -46,9 +51,8 @@ body,
   margin: 0;
   padding: 0;
   background-color: rgb(0, 0, 0);
-  height: 100vh;
+  min-height: 100vh;
   overscroll-behavior: none;
-  overflow: hidden;
 }
 
 * {
@@ -57,6 +61,7 @@ body,
   /* Safari */
   -ms-user-select: none;
   /* IE/Edge */
+  -webkit-font-smoothing: antialiased;
 }
 
 input,

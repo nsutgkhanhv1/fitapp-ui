@@ -1,4 +1,5 @@
 import type { FC } from 'react';
+import defaultImage from '../assets/bb9ce2750178d81376a972f4236fb7ae5def3d77.png';
 
 interface TitleCardProps {
   headerTitle?: string;
@@ -12,7 +13,7 @@ const TitleCard: FC<TitleCardProps> = ({
   headerTitle = "Title 02",
   title = "Title 02",
   description = "Description 02",
-  imageUrl = "http://localhost:3845/assets/7bde711e83a8db05b705fe70d0fdf78c4ebc2bd5.png",
+  imageUrl = defaultImage,
   className = "",
 }) => {
   return (
