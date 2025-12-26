@@ -11,6 +11,10 @@ import ChatBubble from './components/ChatBubble';
 import ChatMessage from './components/ChatMessage';
 import MissionItem from './components/MissionItem';
 import DashboardPage from './pages/DashboardPage';
+import MissionPage from './pages/MissionPage';
+import QuestionnairePage from './pages/QuestionnairePage';
+import RecordScreen from './pages/RecordScreen';
+import ChatScreen from './pages/ChatScreen';
 
 // Import actual SVG assets from Figma
 import cameraIcon from './assets/7cf99edef5a85ab32ef94cd44170dc757f68580a.svg';
@@ -65,6 +69,30 @@ const App = () => {
         <section>
           <h2 className="text-xl font-bold mb-4 text-gray-800">Dashboard Page</h2>
           <DashboardPage />
+        </section>
+
+        {/* Mission Page Demo */}
+        <section>
+          <h2 className="text-xl font-bold mb-4 text-gray-800">Mission Page</h2>
+          <MissionPage />
+        </section>
+
+        {/* Questionnaire Page Demo */}
+        <section>
+          <h2 className="text-xl font-bold mb-4 text-gray-800">Questionnaire Page</h2>
+          <QuestionnairePage />
+        </section>
+
+        {/* Record Screen Demo */}
+        <section>
+          <h2 className="text-xl font-bold mb-4 text-gray-800">Record Screen</h2>
+          <RecordScreen />
+        </section>
+
+        {/* Chat Screen Demo */}
+        <section>
+          <h2 className="text-xl font-bold mb-4 text-gray-800">Chat Screen</h2>
+          <ChatScreen />
         </section>
 
         {/* Headers Section */}

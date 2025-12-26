@@ -37,7 +37,7 @@ const MissionItem: FC<MissionItemProps> = ({
   return (
     <button
       onClick={onClick}
-      className={`flex items-start w-72 ${className}`}
+      className={`flex items-start w-full ${className}`}
     >
       <div 
         className={`relative flex items-center gap-px w-full py-1.5 px-3 rounded-full border border-solid border-card-border ${
