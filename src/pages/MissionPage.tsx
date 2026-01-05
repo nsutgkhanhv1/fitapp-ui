@@ -1,4 +1,3 @@
-import type { FC } from 'react';
 import Header from '../components/Header';
 import SectionHeader from '../components/SectionHeader';
 import PictureCard from '../components/PictureCard';
@@ -26,13 +25,9 @@ const SmallCharacterIcon = () => (
   />
 );
 
-interface MissionPageProps {
-  className?: string;
-}
-
-const MissionPage: FC<MissionPageProps> = ({ className = "" }) => {
+const MissionPage = () => {
   return (
-    <div className={`w-80 min-h-[568px] bg-ui-yellow flex flex-col overflow-hidden ${className}`}>
+    <div className={`w-80 min-h-[568px] bg-ui-yellow flex flex-col overflow-hidden`}>
       {/* Header */}
       <Header title="Mission" showBack />
 
@@ -40,7 +35,7 @@ const MissionPage: FC<MissionPageProps> = ({ className = "" }) => {
       <div className="flex-1 p-4 flex flex-col gap-2.5 overflow-hidden">
         {/* Daily Mission Section */}
         <SectionHeader title="Daily Mission" variant="orange" />
-        
+
         {/* Picture Cards Row */}
         <div className="flex justify-center items-center gap-2 overflow-hidden">
           {/* Upload Meal Photo - Not done */}
@@ -50,7 +45,7 @@ const MissionPage: FC<MissionPageProps> = ({ className = "" }) => {
             imageUrl={mealImage}
             done={false}
           />
-          
+
           {/* Post Workout Pic - Done */}
           <PictureCard
             title={"Post Workout\nPic"}
@@ -58,7 +53,7 @@ const MissionPage: FC<MissionPageProps> = ({ className = "" }) => {
             overlayImageUrl={workoutOverlay}
             done={true}
           />
-          
+
           {/* Chat with Your Buddy - Not done */}
           <PictureCard
             title={"Chat with\nYour Buddy"}
@@ -70,7 +65,7 @@ const MissionPage: FC<MissionPageProps> = ({ className = "" }) => {
 
         {/* Weekly Mission Section */}
         <SectionHeader title="Weekly Mission" variant="navy" />
-        
+
         {/* Mission Items */}
         <div className="flex-1 flex flex-col gap-1">
           <MissionItem
@@ -119,7 +114,7 @@ const MissionPage: FC<MissionPageProps> = ({ className = "" }) => {
               {/* Inner shadow */}
               <div className="absolute -inset-px pointer-events-none rounded-full shadow-card-inset" />
             </div>
-            
+
             {/* Missions Button */}
             <ButtonWithIcon
               label="Missions"

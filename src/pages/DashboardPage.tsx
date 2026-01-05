@@ -1,4 +1,3 @@
-import type { FC } from 'react';
 import Header from '../components/Header';
 import MissionCard from '../components/MissionCard';
 import TitleCard from '../components/TitleCard';
@@ -9,20 +8,17 @@ import ButtonWithIcon from '../components/ButtonWithIcon';
 import characterCropped from '../assets/dashboard_character_final.png';
 import starIcon from '../assets/target-icon.svg';
 import streakIcon from '../assets/target-icon.svg';
-import coachShiba from '../assets/target-icon.svg';
+import coachShiba from '../assets/dashboard_character.png';
 
 // Star icon component for the button
 const MissionsIcon = () => (
   <img src={starIcon} alt="" className="w-10 h-10" />
 );
 
-interface DashboardPageProps {
-  className?: string;
-}
 
-const DashboardPage: FC<DashboardPageProps> = ({ className = "" }) => {
+const DashboardPage = () => {
   return (
-    <div className={`w-80 min-h-[568px] bg-ui-yellow flex flex-col overflow-hidden ${className}`}>
+    <div className={`w-full h-full max-w-md bg-ui-yellow flex flex-col overflow-hidden`}>
       {/* Header */}
       <Header title="LEVELFIT" />
 
@@ -58,14 +54,14 @@ const DashboardPage: FC<DashboardPageProps> = ({ className = "" }) => {
       </div>
 
       {/* Bottom Section */}
-      <div className="relative h-[137px]">
+      <div className="relative h-fit">
         {/* Bottom Navigation Bar - positioned at bottom */}
         <div className="absolute bottom-0 left-0 right-0 h-[70px] bg-ui-navy flex flex-col z-0">
           <div className="h-[5px] bg-[#ffa75a]" />
         </div>
 
         {/* Content Row - positioned above the nav bar */}
-        <div className="absolute inset-0 flex items-start z-10">
+        <div className="absolute bottom-0 flex items-start z-10">
           {/* Coach Shiba Character */}
           <div className="w-[126px] h-28 flex items-end overflow-hidden">
             <img

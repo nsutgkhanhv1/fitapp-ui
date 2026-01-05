@@ -1,4 +1,3 @@
-import type { FC } from 'react';
 import ButtonWhite from '../components/ButtonWhite';
 import ButtonNoIcon from '../components/ButtonNoIcon';
 
@@ -13,16 +12,12 @@ const CheckIcon = () => (
   </svg>
 );
 
-interface QuestionnairePageProps {
-  className?: string;
-}
-
-const QuestionnairePage: FC<QuestionnairePageProps> = ({ className = "" }) => {
+const QuestionnairePage = () => {
   // Mock data for the questionnaire
   const questionNumber = "01";
   const questionText = "What is your main fitness goals?";
   const selectedAnswer = 2; // Index of selected answer (0-based, so "C. Get toned")
-  
+
   const answers = [
     "A. Build muscle",
     "B. Lose weight",
@@ -32,7 +27,7 @@ const QuestionnairePage: FC<QuestionnairePageProps> = ({ className = "" }) => {
   ];
 
   return (
-    <div className={`w-80 min-h-[568px] bg-ui-white flex flex-col items-center overflow-hidden ${className}`}>
+    <div className={`w-80 min-h-[568px] bg-ui-white flex flex-col items-center overflow-hidden`}>
       {/* Question Header */}
       <div className="w-full h-32 py-4 bg-ui-white flex flex-col justify-end items-center overflow-hidden">
         <h1 className="w-72 text-center font-['Baloo_2'] font-extrabold text-2xl text-black leading-tight">
@@ -85,7 +80,7 @@ const QuestionnairePage: FC<QuestionnairePageProps> = ({ className = "" }) => {
               {/* Inner shadow */}
               <div className="absolute -inset-px pointer-events-none rounded-full shadow-card-inset" />
             </div>
-            
+
             {/* Next Button */}
             <ButtonNoIcon
               label="Next"

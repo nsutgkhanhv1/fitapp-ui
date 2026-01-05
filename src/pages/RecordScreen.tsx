@@ -36,7 +36,7 @@ const QuestionCard: FC<QuestionCardProps> = ({
             {example}
           </p>
         </div>
-        
+
         {/* Image */}
         {imageUrl && (
           <div className="w-24 h-full flex items-center justify-center overflow-hidden">
@@ -48,18 +48,14 @@ const QuestionCard: FC<QuestionCardProps> = ({
           </div>
         )}
       </div>
-      
+
       {/* Inner shadow */}
       <div className="absolute -inset-px pointer-events-none rounded-2xl shadow-card-inset" />
     </button>
   );
 };
 
-interface RecordScreenProps {
-  className?: string;
-}
-
-const RecordScreen: FC<RecordScreenProps> = ({ className = "" }) => {
+const RecordScreen = () => {
   const questionNumber = "01";
   const questionText = "What is your main fitness goals?";
 
@@ -85,7 +81,7 @@ const RecordScreen: FC<RecordScreenProps> = ({ className = "" }) => {
   ];
 
   return (
-    <div className={`w-80 min-h-[568px] bg-ui-white flex flex-col items-center overflow-hidden ${className}`}>
+    <div className={`w-80 min-h-[568px] bg-ui-white flex flex-col items-center overflow-hidden`}>
       {/* Question Header */}
       <div className="w-full py-4 bg-ui-white flex flex-col justify-center items-center overflow-hidden">
         <h1 className="w-72 text-center font-['Baloo_2'] font-extrabold text-2xl text-black leading-tight">
@@ -138,7 +134,7 @@ const RecordScreen: FC<RecordScreenProps> = ({ className = "" }) => {
               {/* Inner shadow */}
               <div className="absolute -inset-px pointer-events-none rounded-full shadow-card-inset" />
             </div>
-            
+
             {/* Record Button */}
             <ButtonNoIcon
               label="Record"
