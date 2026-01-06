@@ -29,20 +29,11 @@ const Header: FC<HeaderProps> = ({
           </button>
         )}
 
-        <h1 className="flex-1 font-['Baloo_2'] font-extrabold text-2xl text-black leading-normal">
+        <h1 className="flex-1 font-['Baloo_2'] font-extrabold text-2xl text-black leading-normal text-center">
           {showBack ? title : title}
         </h1>
 
-        <button
-          onClick={onNotification}
-          className="shrink-0 size-6"
-        >
-          {/* Notification bell icon */}
-          <svg viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg" className="size-full">
-            <path d="M12.5 2.5C9.5 2.5 7 5 7 8V12L5 14V15H20V14L18 12V8C18 5 15.5 2.5 12.5 2.5Z" stroke="black" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-            <path d="M10.5 18C10.5 19.1 11.4 20 12.5 20C13.6 20 14.5 19.1 14.5 18" stroke="black" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-          </svg>
-        </button>
+        <img onClick={onNotification} src="/bell-icon.png" className='w-10 h-10 shrink-0' />
       </div>
 
       {/* Inner shadow */}

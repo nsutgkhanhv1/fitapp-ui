@@ -2,9 +2,6 @@ import type { FC } from 'react';
 import ButtonNoIcon from '../components/ButtonNoIcon';
 
 // Import assets
-import coachCharacter from '../assets/bc0949735f7e1c3fd7cad7002244b3b64f4ee416.png';
-import fitnessImage1 from '../assets/c33ac257ec9f901e9d5a4d20f446f6c05f3133a4.png';
-import fitnessImage2 from '../assets/29a83d6926850ad4301580393d117f96899d293b.png';
 
 interface QuestionCardProps {
   question: string;
@@ -63,19 +60,19 @@ const RecordScreen = () => {
     {
       question: "1. What is your current life style now?",
       example: "Ex: I always have fitness 3, 4 times each weeks. Hard work !...",
-      imageUrl: fitnessImage1,
+      imageUrl: "https://placehold.co/280x200",
       imageFlipped: true,
     },
     {
       question: "1. What is your current life style now?",
       example: "Ex: I always have fitness 3, 4 times each weeks. Hard work !...",
-      imageUrl: fitnessImage2,
+      imageUrl: "https://placehold.co/280x200",
       imageFlipped: false,
     },
     {
       question: "1. What is your current life style now?",
       example: "Ex: I always have fitness 3, 4 times each weeks. Hard work !...",
-      imageUrl: undefined,
+      imageUrl: "https://placehold.co/280x200",
       imageFlipped: false,
     },
   ];
@@ -118,7 +115,7 @@ const RecordScreen = () => {
           {/* Coach Character */}
           <div className="w-32 h-full flex items-end overflow-hidden">
             <img
-              src={coachCharacter}
+              src="https://placehold.co/200x200"
               alt="Coach"
               className="w-32 h-36 object-contain object-bottom"
             />

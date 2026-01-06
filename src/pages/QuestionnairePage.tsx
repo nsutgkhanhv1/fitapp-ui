@@ -1,8 +1,6 @@
 import ButtonWhite from '../components/ButtonWhite';
 import ButtonNoIcon from '../components/ButtonNoIcon';
 
-// Import assets
-import coachCharacter from '../assets/bc0949735f7e1c3fd7cad7002244b3b64f4ee416.png';
 
 // Check icon for selected answer
 const CheckIcon = () => (
@@ -64,7 +62,7 @@ const QuestionnairePage = () => {
           {/* Coach Character */}
           <div className="w-32 h-full flex items-end overflow-hidden">
             <img
-              src={coachCharacter}
+              src="https://placehold.co/200x200"
               alt="Coach"
               className="w-32 h-36 object-contain object-bottom"
             />

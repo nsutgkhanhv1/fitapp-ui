@@ -4,22 +4,17 @@ import PictureCard from '../components/PictureCard';
 import MissionItem from '../components/MissionItem';
 import ButtonWithIcon from '../components/ButtonWithIcon';
 
-// Import assets
-import coachCharacter from '../assets/4bd713e163291403becacdcca0797fbd05a0cf77.png';
-import mealImage from '../assets/0b356c9062007aa825feed84ba333aae6217c988.png';
-import workoutOverlay from '../assets/8fc1973011e6a9034d6f383a11abe8156c53c0dd.png';
-import chatBuddyImage from '../assets/bb9ce2750178d81376a972f4236fb7ae5def3d77.png';
 
 
 // Missions button icon - using coach character
 const MissionsIcon = () => (
-  <img src={coachCharacter} alt="" className="w-12 h-11 object-cover object-top" />
+  <img src="https://placehold.co/200x200" alt="" className="w-12 h-11 object-cover object-top" />
 );
 
 // Small character icon for mission items
 const SmallCharacterIcon = () => (
   <img
-    src={chatBuddyImage}
+    src="https://placehold.co/200x200"
     alt=""
     className="size-6 object-cover object-top rounded-sm"
   />
@@ -42,15 +37,15 @@ const MissionPage = () => {
           <PictureCard
             title={"Upload Meal\nPhoto"}
             caption="Get snaping!"
-            imageUrl={mealImage}
+            imageUrl="https://placehold.co/200x200"
             done={false}
           />
 
           {/* Post Workout Pic - Done */}
           <PictureCard
             title={"Post Workout\nPic"}
-            imageUrl={mealImage}
-            overlayImageUrl={workoutOverlay}
+            imageUrl="https://placehold.co/200x200"
+            overlayImageUrl="https://placehold.co/200x200"
             done={true}
           />
 
@@ -58,7 +53,7 @@ const MissionPage = () => {
           <PictureCard
             title={"Chat with\nYour Buddy"}
             caption="Get snaping!"
-            imageUrl={chatBuddyImage}
+            imageUrl="https://placehold.co/200x200"
             done={false}
           />
         </div>
@@ -98,7 +93,7 @@ const MissionPage = () => {
           {/* Coach Character */}
           <div className="w-32 h-28 flex items-end overflow-hidden">
             <img
-              src={coachCharacter}
+              src="https://placehold.co/200x200"
               alt="Coach"
               className="w-32 h-28 object-contain object-bottom"
             />

@@ -1,20 +1,19 @@
 import Header from '../components/Header';
-import MissionCard from '../components/MissionCard';
-import TitleCard from '../components/TitleCard';
+import CurrentTrainingCard from '../components/CurrentTrainingCard';
+import StatCard from '../components/StatCard';
+import PetLevelCard from '../components/PetLevelCard';
+import IconButtonRow from '../components/IconButtonRow';
 import ChatBubble from '../components/ChatBubble';
 import ButtonWithIcon from '../components/ButtonWithIcon';
 
-// Import assets
-import characterCropped from '../assets/dashboard_character_final.png';
-import starIcon from '../assets/target-icon.svg';
-import streakIcon from '../assets/target-icon.svg';
-import coachShiba from '../assets/dashboard_character.png';
+// Import assets - using existing project Shiba assets
+import bottomShiba from '../assets/coach_shiba.png';
+import workoutIcon from '../assets/shiba_v1.png';
 
-// Star icon component for the button
-const MissionsIcon = () => (
-  <img src={starIcon} alt="" className="w-10 h-10" />
+// Workout Icon for button
+const WorkoutIcon = () => (
+  <img src={workoutIcon} alt="" className="w-12 h-11 object-contain" style={{ filter: 'drop-shadow(0px 4px 4px rgba(0,0,0,0.25))' }} />
 );
-
 
 const DashboardPage = () => {
   return (
@@ -23,63 +22,71 @@ const DashboardPage = () => {
       <Header title="LEVELFIT" />
 
       {/* Main Content Area */}
-      <div className="flex-1 p-4 flex flex-col gap-2.5">
-        {/* Mission Card */}
-        <MissionCard
-          headerTitle="Title 01"
-          missionTitle="Today's Mission!"
-          description="- Complete 300 Skips -"
-          currentProgress={42}
-          maxProgress={300}
-          imageUrl={characterCropped}
+      <div className="flex-1 p-4 flex flex-col gap-2.5 overflow-y-auto">
+        {/* Current Training Method Card */}
+        <CurrentTrainingCard
+          methodName="FIIT Mode"
+          currentWorkouts={3}
+          maxWorkouts={5}
         />
 
-        {/* Two Title Cards Side by Side */}
+        {/* Weight and Daily Missions Side by Side */}
         <div className="flex gap-2.5">
-          <TitleCard
-            headerTitle="Title 02"
-            title="Title 02"
-            description="Description 02"
-            imageUrl={starIcon}
-            className="flex-1"
+          <StatCard
+            variant="weight"
+            value="67.5"
+            unit="Kg"
+            className="w-28"
           />
-          <TitleCard
-            headerTitle="Title 02"
-            title="Title 02"
-            description="Description 02"
-            imageUrl={streakIcon}
+          <StatCard
+            variant="missions"
+            current={1}
+            max={3}
             className="flex-1"
           />
         </div>
+
+        {/* Pet Level Card */}
+        <PetLevelCard
+          level={5}
+          currentExp={300}
+          maxExp={500}
+        />
+
+        {/* Icon Button Row */}
+        <IconButtonRow />
       </div>
 
       {/* Bottom Section */}
-      <div className="relative h-fit">
-        {/* Bottom Navigation Bar - positioned at bottom */}
-        <div className="absolute bottom-0 left-0 right-0 h-[70px] bg-ui-navy flex flex-col z-0">
-          <div className="h-[5px] bg-[#ffa75a]" />
+      <div className="h-fit flex relative">
+        {/* Navy Background Bar */}
+        <div className=" absolute bottom-0 left-0 right-0 h-16 bg-slate-600 flex flex-col">
+          <div className="h-[5px] bg-orange-300" />
         </div>
 
-        {/* Content Row - positioned above the nav bar */}
-        <div className="absolute bottom-0 flex items-start z-10">
-          {/* Coach Shiba Character */}
-          <div className="w-[126px] h-28 flex items-end overflow-hidden">
+        {/* Content */}
+        <div className="z-10 inset-0 flex">
+          {/* Shiba Character */}
+          <div className="w-32 h-full flex items-end">
             <img
-              src={coachShiba}
-              alt="Coach Shiba"
-              className="w-[126px] h-28 object-contain"
+              src={bottomShiba}
+              alt="Shiba"
+              className="w-32 h-28 object-contain"
             />
           </div>
 
-          {/* Right Side - Chat Bubble and Button */}
-          <div className="flex-1 p-2 flex flex-col gap-2.5 overflow-hidden">
+          {/* Right Content */}
+          <div className="flex-1 p-2 flex flex-col justify-end items-center gap-2.5 overflow-hidden">
+            {/* Chat Bubble */}
             <ChatBubble
-              message="Description 02: Lorem Ipsum is simply dummy text of the printing"
+              message="Tập luyện ngay với tôi nhé!"
               className="w-full"
             />
+
+            {/* Create Workout Button */}
             <ButtonWithIcon
-              label="Missions"
-              icon={<MissionsIcon />}
+              label="Create workout"
+              icon={<WorkoutIcon />}
             />
           </div>
         </div>

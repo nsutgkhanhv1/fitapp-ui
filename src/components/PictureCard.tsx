@@ -1,6 +1,4 @@
 import type { FC } from 'react';
-import mealImage from '../assets/0b356c9062007aa825feed84ba333aae6217c988.png';
-import overlayImage from '../assets/8fc1973011e6a9034d6f383a11abe8156c53c0dd.png';
 
 interface PictureCardProps {
   title?: string;
@@ -14,16 +12,15 @@ interface PictureCardProps {
 const PictureCard: FC<PictureCardProps> = ({
   title = "Upload Meal\nPhoto",
   caption = "Get snaping!",
-  imageUrl = mealImage,
+  imageUrl = "https://placehold.co/280x200",
   done = false,
-  overlayImageUrl = overlayImage,
+  overlayImageUrl = "https://placehold.co/280x200",
   className = "",
 }) => {
   return (
-    <div 
-      className={`relative flex flex-col items-center w-24 rounded-2xl border border-solid border-card-border shadow-card ${
-        done ? 'bg-success' : 'bg-ui-white'
-      } ${className}`}
+    <div
+      className={`relative flex flex-col items-center w-24 rounded-2xl border border-solid border-card-border shadow-card ${done ? 'bg-success' : 'bg-ui-white'
+        } ${className}`}
     >
       {/* Header */}
       <div className="flex items-center justify-center w-full px-2.5 pt-2 pb-0.5 border-b border-card-divider rounded-t-2xl">
@@ -31,30 +28,30 @@ const PictureCard: FC<PictureCardProps> = ({
           {title}
         </p>
       </div>
-      
+
       {/* Body */}
       <div className="flex flex-col items-start w-full px-3">
         <div className="flex items-center justify-center w-full relative">
           <div className={`relative w-20 ${done ? 'pb-5' : 'h-20'}`}>
-            <img 
-              alt="" 
-              src={imageUrl} 
+            <img
+              alt=""
+              src={imageUrl}
               className="w-full h-20 object-cover"
             />
-            
+
             {/* Overlay image for done state */}
             {done && (
               <div className="absolute -bottom-2.5 -left-2.5 w-14 h-8 rotate-[10.81deg] border-2 border-white overflow-hidden">
-                <img 
-                  alt="" 
-                  src={overlayImageUrl} 
+                <img
+                  alt=""
+                  src={overlayImageUrl}
                   className="absolute inset-0 w-full h-full object-cover"
                 />
               </div>
             )}
           </div>
         </div>
-        
+
         {/* Caption - only show when not done */}
         {!done && (
           <div className="flex items-start w-full pt-0.5 pb-1 border-t border-card-divider">
@@ -63,11 +60,11 @@ const PictureCard: FC<PictureCardProps> = ({
             </p>
           </div>
         )}
-        
+
         {/* Spacer for done state */}
         {done && <div className="h-5 w-full" />}
       </div>
-      
+
       {/* Inner shadow */}
       <div className="absolute inset-0 pointer-events-none rounded-2xl shadow-card-inset" />
     </div>
