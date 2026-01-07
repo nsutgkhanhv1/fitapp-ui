@@ -6,13 +6,10 @@ import IconButtonRow from '../components/IconButtonRow';
 import ChatBubble from '../components/ChatBubble';
 import ButtonWithIcon from '../components/ButtonWithIcon';
 
-// Import assets - using existing project Shiba assets
-import bottomShiba from '../assets/coach_shiba.png';
-import workoutIcon from '../assets/shiba_v1.png';
 
 // Workout Icon for button
 const WorkoutIcon = () => (
-  <img src={workoutIcon} alt="" className="w-12 h-11 object-contain" style={{ filter: 'drop-shadow(0px 4px 4px rgba(0,0,0,0.25))' }} />
+  <img src="/flame-dumbbell-icon.png" className="w-12 h-11 scale-110 object-contain" style={{ filter: 'drop-shadow(0px 4px 4px rgba(0,0,0,0.25))' }} />
 );
 
 const DashboardPage = () => {
@@ -69,7 +66,7 @@ const DashboardPage = () => {
           {/* Shiba Character */}
           <div className="w-32 h-full flex items-end">
             <img
-              src={bottomShiba}
+              src="/mascot-dashboard.png"
               alt="Shiba"
               className="w-32 h-28 object-contain"
             />
