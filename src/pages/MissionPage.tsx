@@ -21,7 +21,7 @@ const SmallCharacterIcon = () => (
 
 const MissionPage = () => {
   return (
-    <div className={`w-full h-full bg-ui-yellow flex flex-col overflow-hidden`}>
+    <div className={`w-full h-full max-w-md bg-ui-yellow flex flex-col overflow-hidden`}>
       <Header title="Mission" showBack />
 
       <div className="flex-1 p-4 flex flex-col gap-2.5 overflow-hidden">

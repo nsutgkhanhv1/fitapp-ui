@@ -5,6 +5,7 @@ import QuestionnairePage from './pages/QuestionnairePage';
 import RecordScreen from './pages/RecordScreen';
 import ChatScreen from './pages/ChatScreen';
 import SplashPage from './pages/SplashPage';
+import CreateWorkoutSession from './pages/CreateWorkoutSession';
 
 // Home page with navigation to all pages
 const HomePage = () => (
@@ -30,6 +31,9 @@ const HomePage = () => (
         <Link href="/chat" className="block w-full p-4 bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow text-gray-800 font-medium">
           💬 Chat
         </Link>
+        <Link href="/create-session" className="block w-full p-4 bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow text-gray-800 font-medium">
+          🏋️ Create Workout Session
+        </Link>
       </nav>
     </div>
   </div>
@@ -46,6 +50,7 @@ const App = () => {
         <Route path="/questionnaire" component={QuestionnairePage} />
         <Route path="/record" component={RecordScreen} />
         <Route path="/chat" component={ChatScreen} />
+        <Route path="/create-session" component={CreateWorkoutSession} />
       </Router>
     </div>
   );
