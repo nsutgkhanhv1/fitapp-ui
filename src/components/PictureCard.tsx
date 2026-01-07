@@ -1,4 +1,6 @@
 import type { FC } from 'react';
+import { CircleCheck } from 'lucide-react'
+import { cn } from '@/lib/utils';
 
 interface PictureCardProps {
   title?: string;
@@ -21,29 +23,26 @@ const PictureCard: FC<PictureCardProps> = ({
 }) => {
   return (
     <div
-      className={`relative flex-1 flex flex-col items-center rounded-2xl border border-solid border-card-border shadow-card ${done ? 'bg-success' : 'bg-ui-white'
+      className={`relative flex-1 flex flex-col items-center rounded-2xl border border-solid shadow-card ${done ? 'bg-linear-to-r from-green-start to-green-end border-[#1BFF36]' : 'bg-ui-white border-card-border'
         } ${className}`}
     >
-      {/* Header */}
       <div className="flex items-center justify-center w-full px-2.5 pt-1 rounded-t-2xl">
-        <p className="font-['Baloo_2'] font-extrabold text-xs text-black text-center leading-4 whitespace-pre-line">
+        <p className={cn("font-['Baloo_2'] font-extrabold text-xs  text-center leading-4 whitespace-pre-line", done ? 'text-white' : 'text-black')}>
           {title}
         </p>
       </div>
 
-      {/* Body */}
       <div className="flex flex-col items-start w-full px-3 pb-2">
         <div className="flex items-center justify-center w-full relative">
-          <div className={`relative w-20 ${done ? 'pb-5' : 'h-20'}`}>
+          <div className={`relative w-full`}>
             <img
               alt=""
               src={imageUrl}
               className="w-full h-20 object-cover"
             />
 
-            {/* Overlay image for done state */}
             {done && (
-              <div className="absolute bottom-5 -left-2.5 w-14 h-8 rotate-[10.81deg] border-2 border-white overflow-hidden">
+              <div className="absolute bottom-0 -left-2.5 w-14 h-8 rotate-[10.81deg] border-2 border-white overflow-hidden">
                 <img
                   alt=""
                   src={overlayImageUrl}
@@ -52,16 +51,24 @@ const PictureCard: FC<PictureCardProps> = ({
               </div>
             )}
           </div>
+
+
         </div>
 
-        {/* Button - only show when not done */}
+        {done && (
+          <div className="flex items-center w-full pt-1 gap-1 justify-center">
+            <CircleCheck className='text-white' />
+            <span className="font-['Baloo_2'] font-extrabold text-xs text-white text-center leading-4 whitespace-pre-line">Done</span>
+          </div>
+        )}
+
         {!done && (
           <div className="flex items-start w-full py-1">
             <button
               type="button"
               style={{ boxShadow: '0px 2px 2px 0px rgba(0,0,0,0.60), 0 0.99px 0.5px 0 #FFC68F inset, 0 -1.49px 0.5px 0 #00000025 inset' }}
               onClick={onButtonClick}
-              className="flex-1 font-['Baloo_2'] rounded-full font-medium text-white py-1 text-xs text-center leading-3  bg-linear-to-r from-button-start to-button-end cursor-pointer"
+              className="flex-1 font-['Baloo_2'] font-extrabold rounded-full text-white py-1 text-xs text-center leading-3  bg-linear-to-r from-button-start to-button-end cursor-pointer"
             >
               {buttonText}
             </button>
@@ -69,13 +76,8 @@ const PictureCard: FC<PictureCardProps> = ({
         )}
       </div>
 
-      {done && (
-        <div className="flex items-center w-full py-1 gap-1">
-          
-        </div>
-      )}
 
-      {/* Inner shadow */}
+
       <div className="absolute inset-0 pointer-events-none rounded-2xl shadow-card-inset" />
     </div>
   );

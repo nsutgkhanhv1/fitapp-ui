@@ -50,20 +50,15 @@ const DashboardPage = () => {
           maxExp={500}
         />
 
-        {/* Icon Button Row */}
         <IconButtonRow />
       </div>
 
-      {/* Bottom Section */}
       <div className="h-fit flex relative">
-        {/* Navy Background Bar */}
-        <div className=" absolute bottom-0 left-0 right-0 h-16 bg-slate-600 flex flex-col">
+        <div className="absolute bottom-0 left-0 right-0 h-16 bg-slate-600 flex flex-col">
           <div className="h-[5px] bg-orange-300" />
         </div>
 
-        {/* Content */}
         <div className="z-10 inset-0 flex">
-          {/* Shiba Character */}
           <div className="w-32 h-full flex items-end">
             <img
               src="/mascot-dashboard.png"
@@ -72,15 +67,12 @@ const DashboardPage = () => {
             />
           </div>
 
-          {/* Right Content */}
           <div className="flex-1 p-2 flex flex-col justify-end items-center gap-2.5 overflow-hidden">
-            {/* Chat Bubble */}
             <ChatBubble
               message="Tập luyện ngay với tôi nhé!"
               className="w-full"
             />
 
-            {/* Create Workout Button */}
             <ButtonWithIcon
               label="Create workout"
               icon={<WorkoutIcon />}

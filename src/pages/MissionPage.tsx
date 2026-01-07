@@ -3,20 +3,19 @@ import SectionHeader from '../components/SectionHeader';
 import PictureCard from '../components/PictureCard';
 import MissionItem from '../components/MissionItem';
 import ButtonWithIcon from '../components/ButtonWithIcon';
+import ChatBubble from '@/components/ChatBubble';
 
 
 
-// Missions button icon - using coach character
 const MissionsIcon = () => (
-  <img src="https://placehold.co/200x200" alt="" className="w-12 h-11 object-cover object-top" />
+  <img src="/flame-dumbbell-icon.png" className="w-12 h-11 scale-110 object-contain" style={{ filter: 'drop-shadow(0px 4px 4px rgba(0,0,0,0.25))' }} />
 );
 
-// Small character icon for mission items
 const SmallCharacterIcon = () => (
   <img
-    src="https://placehold.co/200x200"
+    src="/target-sticker.png"
     alt=""
-    className="size-6 object-cover object-top rounded-sm"
+    className="w-8 h-6 object-cover object-top rounded-sm"
   />
 );
 
@@ -30,7 +29,7 @@ const MissionPage = () => {
           style={{
             boxShadow: '0 2px 1px 0 rgba(142, 178, 255, 0.90) inset, 0px 2px 4px 0px rgba(0,0,0,0.25), 0 -5px 1px 0 rgba(32, 44, 124, 0.25) inset',
           }}
-          className="relative border border-t-0 border-[#1D65A9] w-full bg-linear-to-r from-[#1D83E5] to-[#3EA3F7] px-1.5 py-3 rounded-[20px] flex flex-col gap-1 items-center justify-center"
+          className="relative border border-t-0 border-[#1D65A9] w-full bg-linear-to-r from-section-header-start to-section-header-end px-1.5 py-3 rounded-[20px] flex flex-col gap-1 items-center justify-center"
         >
           <div className='flex gap-2 w-full px-3 py-1'>
             <img src="/mission-icon.png" className='w-9 h-9' />
@@ -40,7 +39,7 @@ const MissionPage = () => {
             >
               Daily mission (1/3)
             </span>
-             <img src="/golden-star-icon.png" alt="" className="w-9 h-9" />
+            <img src="/golden-star-icon.png" alt="" className="w-9 h-9" />
           </div>
           <div className='flex gap-1 items-start justify-center'>
             <PictureCard
@@ -68,57 +67,67 @@ const MissionPage = () => {
           </div>
         </div>
 
-        <SectionHeader title="Weekly Mission" variant="navy" />
+        <SectionHeader title="Weekly Mission (0/4)" />
 
         <div className="flex-1 flex flex-col gap-1">
           <MissionItem
-            title="Name your mission"
+            title="Update Body Progress"
+            current={0}
+            total={1}
             icon={<SmallCharacterIcon />}
             done={false}
           />
           <MissionItem
-            title="Name your mission"
+            title="Upload Your Meal Photo"
+            current={5}
+            total={5}
             icon={<SmallCharacterIcon />}
             done={true}
           />
           <MissionItem
-            title="Name your mission"
+            title="Upload Your Workout pic"
+            current={0}
+            total={3}
+            icon={<SmallCharacterIcon />}
+            done={false}
+          />
+          <MissionItem
+            title="Level Up your Pet"
+            current={0}
+            total={1}
             icon={<SmallCharacterIcon />}
             done={false}
           />
         </div>
       </div>
-      <div className="relative h-36">
+      <div className="relative h-fit flex">
         <div className="absolute bottom-0 left-0 right-0 h-16 bg-ui-navy flex flex-col z-0">
           <div className="h-[5px] bg-daily-mission" />
         </div>
 
-        <div className="absolute inset-0 flex items-start z-10">
-          <div className="w-32 h-28 flex items-end overflow-hidden">
+        <div className="z-10 inset-0 flex">
+          <div className="w-32 h-full flex items-end">
             <img
-              src="https://placehold.co/200x200"
-              alt="Coach"
-              className="w-32 h-28 object-contain object-bottom"
+              src="/mascot-dashboard.png"
+              alt="Shiba"
+              className="w-32 h-28 object-contain"
             />
           </div>
 
-          <div className="flex-1 p-2 flex flex-col justify-end items-center gap-2.5 overflow-hidden h-full">
-            <div className="relative w-44 p-3 bg-ui-white rounded-full border border-solid border-reward-border shadow-card">
-              <p className="w-32 font-['Baloo_2'] font-extrabold text-sm text-text-muted text-center leading-4">
-                Earn your rewards
-              </p>
-              <div className="absolute -inset-px pointer-events-none rounded-full shadow-card-inset" />
-            </div>
+          <div className="flex-1 p-2 flex flex-col justify-end items-center gap-2.5 overflow-hidden">
+            <ChatBubble
+              message="Tập luyện ngay với tôi nhé!"
+              className="w-full"
+            />
 
             <ButtonWithIcon
-              label="Missions"
+              label="Create workout"
               icon={<MissionsIcon />}
-              className="w-44"
             />
           </div>
         </div>
       </div>
-      
+
     </div>
   );
 };
