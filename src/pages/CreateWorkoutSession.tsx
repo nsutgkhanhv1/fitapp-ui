@@ -3,6 +3,7 @@ import Header from '../components/Header';
 import ChatBubble from '../components/ChatBubble';
 import ButtonWithIcon from '../components/ButtonWithIcon';
 import StepSlider from '@/components/StepSlider';
+import IconButton from '@/components/IconButton';
 
 // Workout Icon for button
 const WorkoutIcon = () => (
@@ -24,10 +25,7 @@ const TimerIcon = () => (
 
 // Microphone icon for record button
 const MicIcon = () => (
-  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3z" fill="currentColor" />
-    <path d="M17 11c0 2.76-2.24 5-5 5s-5-2.24-5-5H5c0 3.53 2.61 6.43 6 6.92V21h2v-3.08c3.39-.49 6-3.39 6-6.92h-2z" fill="currentColor" />
-  </svg>
+  <img src="/mic-sticker.png" alt="Mic" className="w-10 h-10 object-contain" />
 );
 
 // Keyboard icon
@@ -49,10 +47,6 @@ const KeyboardIcon = () => (
 const CreateWorkoutSession = () => {
   const [duration, setDuration] = useState(60);
   const steps = [0, 15, 30, 45, 60, 75, 90, 105, 120];
-
-  // Calculate the filled percentage
-  const fillPercentage = (duration / 120) * 100;
-
 
   return (
     <div className="w-full h-full max-w-md bg-ui-yellow flex flex-col overflow-hidden">
@@ -115,15 +109,15 @@ const CreateWorkoutSession = () => {
         </div>
 
         <div
-          className="bg-ui-white rounded-[20px] p-4 flex flex-col gap-3"
+          className="bg-ui-white rounded-[20px] flex flex-col gap-3"
           style={{
             boxShadow: '0px 2px 4px 0px rgba(0,0,0,0.15), inset 0px -3px 1px 0px rgba(183, 133, 90, 0.15)',
             border: '1px solid #E5DDD0'
           }}
         >
-          <h3 className="text-center text-dark-text text-title-02 font-extrabold font-['Baloo_2']">
+          <div className="text-center text-ui-navy text-title-02 font-extrabold font-['Baloo_2'] p-4 pb-0 border-b border-card-divider">
             Any Issues today?
-          </h3>
+          </div>
 
           <div className="flex items-center justify-center gap-3">
             <ButtonWithIcon
@@ -131,24 +125,19 @@ const CreateWorkoutSession = () => {
               icon={<MicIcon />}
             />
 
-            <button
-              className="w-10 h-10 bg-white rounded-full flex items-center justify-center
-                border border-gray-200
-                shadow-[0px_2px_4px_0px_rgba(0,0,0,0.15)]
-                active:scale-95 active:translate-y-px active:shadow-none
-                transition-all duration-100"
-            >
-              <KeyboardIcon />
-            </button>
+            <IconButton
+              icon={<KeyboardIcon />}
+              className="size-9"
+            />
           </div>
 
           <div className="w-full h-px bg-gray-200" />
 
-          <div className="flex flex-col gap-1">
-            <h4 className="text-center text-dark-text text-desc-01 font-extrabold font-['Baloo_2']">
+          <div className="flex flex-col pb-4">
+            <h4 className="text-center text-text-muted text-title-02 font-extrabold font-['Baloo_2']">
               Summarize information
             </h4>
-            <p className="text-center text-text-muted text-desc-02 font-['Baloo_2'] leading-4">
+            <p className="text-center text-text-muted text-desc-02 font-medium font-['Baloo_2'] leading-4">
               Bị đau chân, tập luyện nhẹ vì có vấn đề liên quan tới tim mạch.
             </p>
           </div>
