@@ -1,5 +1,6 @@
 import ButtonWhite from '../components/ButtonWhite';
 import ButtonNoIcon from '../components/ButtonNoIcon';
+import ChatBubble from '@/components/ChatBubble';
 
 
 // Check icon for selected answer
@@ -25,7 +26,7 @@ const QuestionnairePage = () => {
   ];
 
   return (
-    <div className={`w-80 min-h-[568px] bg-ui-white flex flex-col items-center overflow-hidden`}>
+    <div className={`w-full h-full bg-ui-white flex flex-col items-center overflow-hidden`}>
       {/* Question Header */}
       <div className="w-full h-32 py-4 bg-ui-white flex flex-col justify-end items-center overflow-hidden">
         <h1 className="w-72 text-center font-['Baloo_2'] font-extrabold text-2xl text-black leading-tight">
@@ -38,7 +39,7 @@ const QuestionnairePage = () => {
       </div>
 
       {/* Answer List */}
-      <div className="flex-1 w-full px-4 flex flex-col gap-2.5">
+      <div className="flex-1 justify-center w-full px-4 flex flex-col gap-2.5">
         {answers.map((answer, index) => (
           <ButtonWhite
             key={index}
@@ -62,7 +63,7 @@ const QuestionnairePage = () => {
           {/* Coach Character */}
           <div className="w-32 h-full flex items-end overflow-hidden">
             <img
-              src="https://placehold.co/200x200"
+              src="/coach-shiba.png"
               alt="Coach"
               className="w-32 h-36 object-contain object-bottom"
             />
@@ -70,14 +71,10 @@ const QuestionnairePage = () => {
 
           {/* Right Side - Hint Bubble and Next Button */}
           <div className="flex-1 p-2 flex flex-col justify-end items-center gap-2.5 h-full">
-            {/* Hint Bubble */}
-            <div className="relative w-full p-3 bg-ui-white rounded-full border border-solid border-reward-border shadow-card">
-              <p className="w-full font-['Baloo_2'] font-extrabold text-sm text-text-muted text-center leading-4">
-                Choose one answer!
-              </p>
-              {/* Inner shadow */}
-              <div className="absolute -inset-px pointer-events-none rounded-full shadow-card-inset" />
-            </div>
+            <ChatBubble
+              message="Choose one answer!"
+              className="w-full"
+            />
 
             {/* Next Button */}
             <ButtonNoIcon

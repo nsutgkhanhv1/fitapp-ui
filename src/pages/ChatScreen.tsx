@@ -13,7 +13,7 @@ const CameraIcon = () => (
 
 const ChatScreen = () => {
   return (
-    <div className={`w-full bg-ui-yellow flex flex-col overflow-hidden`}>
+    <div className={`w-full h-full bg-ui-yellow flex flex-col overflow-hidden`}>
       {/* Header */}
       <Header title="Chatbox" showBack />
 

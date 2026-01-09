@@ -1,7 +1,7 @@
 const SplashPage = () => {
   return (
     <div className="w-full h-full max-w-[768px] flex flex-col overflow-hidden relative">
-      <img className="absolute top-0 left-0 w-full h-full object-contain" src="/splash-bg.png" alt="Splash" />
+      <img className="absolute top-0 left-0 w-full h-full object-cover" src="/splash-bg.png" alt="Splash" />
       <img className="w-full z-10 pt-10 px-5" src="/logo.png" alt="Logo" />
 
       <div className="absolute bottom-0 h-[50%] w-full bg-linear-to-t from-black/80 to-gray z-20"></div>
