@@ -1,6 +1,6 @@
 import ButtonWhite from '../components/ButtonWhite';
-import ButtonNoIcon from '../components/ButtonNoIcon';
 import ChatBubble from '@/components/ChatBubble';
+import ButtonWithIcon from '@/components/ButtonWithIcon';
 
 
 // Check icon for selected answer
@@ -77,8 +77,9 @@ const QuestionnairePage = () => {
             />
 
             {/* Next Button */}
-            <ButtonNoIcon
+            <ButtonWithIcon
               label="Next"
+              icon={<img src="/golden-star-icon.png" alt="" className="w-12 h-12 object-contain" />}
               className="w-full"
             />
           </div>

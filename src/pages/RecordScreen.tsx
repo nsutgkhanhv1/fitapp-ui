@@ -1,5 +1,7 @@
 import type { FC } from 'react';
 import ButtonNoIcon from '../components/ButtonNoIcon';
+import ChatBubble from '@/components/ChatBubble';
+import ButtonWithIcon from '@/components/ButtonWithIcon';
 
 // Import assets
 
@@ -24,7 +26,15 @@ const QuestionCard: FC<QuestionCardProps> = ({
       className="relative w-full bg-ui-white rounded-2xl border border-solid border-card-border overflow-hidden"
     >
       <div className="flex items-start h-24">
-        {/* Text Content */}
+        {imageUrl && (
+          <div className="w-20 px-2 h-full flex items-center justify-center overflow-hidden">
+            <img
+              src={imageUrl}
+              alt=""
+              className={`w-20 h-20 object-contain ${imageFlipped ? 'scale-x-[-1]' : ''}`}
+            />
+          </div>
+        )}
         <div className="flex-1 px-3 flex flex-col justify-center h-full">
           <p className="font-['Baloo_2'] font-extrabold text-sm text-dark-text text-left leading-tight">
             {question}
@@ -33,20 +43,8 @@ const QuestionCard: FC<QuestionCardProps> = ({
             {example}
           </p>
         </div>
-
-        {/* Image */}
-        {imageUrl && (
-          <div className="w-24 h-full flex items-center justify-center overflow-hidden">
-            <img
-              src={imageUrl}
-              alt=""
-              className={`w-28 h-20 object-contain ${imageFlipped ? 'scale-x-[-1]' : ''}`}
-            />
-          </div>
-        )}
       </div>
 
-      {/* Inner shadow */}
       <div className="absolute -inset-px pointer-events-none rounded-2xl shadow-card-inset" />
     </button>
   );
@@ -60,31 +58,31 @@ const RecordScreen = () => {
     {
       question: "1. What is your current life style now?",
       example: "Ex: I always have fitness 3, 4 times each weeks. Hard work !...",
-      imageUrl: "https://placehold.co/280x200",
+      imageUrl: "/shiba-eating-sticker.png",
       imageFlipped: true,
     },
     {
       question: "1. What is your current life style now?",
       example: "Ex: I always have fitness 3, 4 times each weeks. Hard work !...",
-      imageUrl: "https://placehold.co/280x200",
+      imageUrl: "/shiba-workout-sticker.png",
       imageFlipped: false,
     },
     {
       question: "1. What is your current life style now?",
       example: "Ex: I always have fitness 3, 4 times each weeks. Hard work !...",
-      imageUrl: "https://placehold.co/280x200",
+      imageUrl: "/shiba-admiring-sticker.png",
       imageFlipped: false,
     },
   ];
 
   return (
-    <div className={`w-80 min-h-[568px] bg-ui-white flex flex-col items-center overflow-hidden`}>
+    <div className={`w-full h-full bg-ui-white flex flex-col items-center overflow-hidden`}>
       {/* Question Header */}
-      <div className="w-full py-4 bg-ui-white flex flex-col justify-center items-center overflow-hidden">
+      <div className="w-full py-4 gap-2 bg-ui-white flex flex-col justify-center items-center overflow-hidden">
         <h1 className="w-72 text-center font-['Baloo_2'] font-extrabold text-2xl text-black leading-tight">
           Tell me about you!
         </h1>
-        <p className="w-72 text-center text-sm leading-tight">
+        <p className="text-center text-sm leading-tight">
           <span className="font-['Baloo_2'] font-extrabold text-black">Question {questionNumber}: </span>
           <span className="font-['Baloo_2'] font-normal text-black">{questionText}</span>
         </p>
@@ -110,31 +108,23 @@ const RecordScreen = () => {
           <div className="h-[5px] bg-daily-mission" />
         </div>
 
-        {/* Content Row */}
         <div className="absolute inset-0 flex items-start z-10">
-          {/* Coach Character */}
           <div className="w-32 h-full flex items-end overflow-hidden">
             <img
-              src="https://placehold.co/200x200"
+              src="/coach-shiba.png"
               alt="Coach"
               className="w-32 h-36 object-contain object-bottom"
             />
           </div>
 
-          {/* Right Side - Hint Bubble and Record Button */}
           <div className="flex-1 p-2 flex flex-col justify-end items-center gap-2.5 h-full">
-            {/* Hint Bubble */}
-            <div className="relative w-full p-3 bg-ui-white rounded-full border border-solid border-reward-border shadow-card">
-              <p className="w-full font-['Baloo_2'] font-extrabold text-sm text-text-muted text-center leading-4">
-                Tell me your answer
-              </p>
-              {/* Inner shadow */}
-              <div className="absolute -inset-px pointer-events-none rounded-full shadow-card-inset" />
-            </div>
-
-            {/* Record Button */}
-            <ButtonNoIcon
+            <ChatBubble
+              message="Tell me your answer"
+              className="w-full"
+            />
+            <ButtonWithIcon
               label="Record"
+              icon={<img src="/mic-sticker.png" alt="Mic" className="w-12 h-12 object-contain" />}
               className="w-full"
             />
           </div>
