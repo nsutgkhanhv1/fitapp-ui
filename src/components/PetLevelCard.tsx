@@ -1,4 +1,5 @@
 import type { FC } from 'react';
+import { useProgressBar } from '../hooks/useAnimations';
 
 
 interface PetLevelCardProps {
@@ -14,7 +15,7 @@ const PetLevelCard: FC<PetLevelCardProps> = ({
   maxExp = 500,
   className = "",
 }) => {
-  const progressPercentage = Math.min((currentExp / maxExp) * 100, 100);
+  const { percentage, showShine, progressRef } = useProgressBar(currentExp, maxExp);
 
   return (
     <div
@@ -45,12 +46,16 @@ const PetLevelCard: FC<PetLevelCardProps> = ({
           <div className="relative w-full h-3.5">
             <div className="absolute inset-0 bg-neutral-700 rounded-[30px]" />
             <div
-              className="absolute top-0 left-0 h-full rounded-[30px]"
+              ref={progressRef}
+              className={`absolute top-0 left-0 h-full rounded-[30px] progress-bar-animated ${showShine ? 'progress-glow' : ''}`}
               style={{
-                width: `${progressPercentage}%`,
+                width: `${percentage}%`,
                 background: 'linear-gradient(to bottom, #FF9D55, #FF5500)'
               }}
-            />
+            >
+              {/* Shine overlay */}
+              {showShine && <div className="progress-shine" />}
+            </div>
             <span className="absolute inset-0 flex items-center justify-center text-white text-sm font-extrabold font-['Baloo_2']">
               {currentExp}/{maxExp} Exp
             </span>
@@ -67,3 +72,4 @@ const PetLevelCard: FC<PetLevelCardProps> = ({
 };
 
 export default PetLevelCard;
+

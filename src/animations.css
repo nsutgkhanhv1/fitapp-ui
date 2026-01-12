@@ -1,0 +1,237 @@
+/* =============================================================================
+   DASHBOARD ANIMATIONS
+   Subtle, juicy micro-interactions for a calm, friendly experience
+   ============================================================================= */
+
+/* -----------------------------------------------------------------------------
+   PAGE LOAD - Staggered Card Entrance
+   ----------------------------------------------------------------------------- */
+@keyframes fadeSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-slide-up {
+  animation: fadeSlideUp 200ms ease-out forwards;
+  opacity: 0;
+}
+
+/* Stagger delay utilities */
+.animation-delay-0 { animation-delay: 0ms; }
+.animation-delay-1 { animation-delay: 60ms; }
+.animation-delay-2 { animation-delay: 120ms; }
+.animation-delay-3 { animation-delay: 180ms; }
+.animation-delay-4 { animation-delay: 240ms; }
+.animation-delay-5 { animation-delay: 300ms; }
+
+/* -----------------------------------------------------------------------------
+   MASCOT POP - Friendly entrance
+   ----------------------------------------------------------------------------- */
+@keyframes mascotPop {
+  0% {
+    opacity: 0;
+    transform: scale(0.92);
+  }
+  70% {
+    opacity: 1;
+    transform: scale(1.02);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-mascot-pop {
+  animation: mascotPop 280ms cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  animation-delay: 200ms;
+  opacity: 0;
+}
+
+/* -----------------------------------------------------------------------------
+   PROGRESS BAR - Smooth width transition + shine effect
+   ----------------------------------------------------------------------------- */
+.progress-bar-animated {
+  transition: width 280ms ease-out;
+  position: relative;
+  overflow: hidden;
+}
+
+@keyframes progressShine {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(200%);
+  }
+}
+
+.progress-shine {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.4) 50%,
+    transparent 100%
+  );
+  animation: progressShine 400ms ease-out forwards;
+  pointer-events: none;
+}
+
+/* Subtle glow effect for progress updates */
+@keyframes progressGlow {
+  0% {
+    box-shadow: 0 0 0 0 rgba(255, 149, 0, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 8px 2px rgba(255, 149, 0, 0.3);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(255, 149, 0, 0);
+  }
+}
+
+.progress-glow {
+  animation: progressGlow 400ms ease-out;
+}
+
+/* -----------------------------------------------------------------------------
+   NAVIGATION ICONS - Press feedback
+   ----------------------------------------------------------------------------- */
+.icon-button-animated {
+  transition: transform 120ms ease-out, box-shadow 120ms ease-out;
+}
+
+.icon-button-animated:active {
+  transform: translateY(-4px) scale(0.96);
+}
+
+.icon-button-animated:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(41, 121, 233, 0.3);
+}
+
+/* Active state glow */
+@keyframes iconGlow {
+  0%, 100% {
+    box-shadow: 0px 1.19px 2.39px 0px rgba(0,0,0,0.25), 
+                inset 0px -2.99px 0.6px 0px rgba(183,133,90,0.25);
+  }
+  50% {
+    box-shadow: 0px 1.19px 2.39px 0px rgba(0,0,0,0.25), 
+                inset 0px -2.99px 0.6px 0px rgba(183,133,90,0.25),
+                0 0 12px 2px rgba(252, 117, 18, 0.25);
+  }
+}
+
+.icon-button-active {
+  animation: iconGlow 600ms ease-out;
+}
+
+/* -----------------------------------------------------------------------------
+   REWARD OVERLAY - Celebration animation
+   ----------------------------------------------------------------------------- */
+@keyframes rewardAppear {
+  0% {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-reward-appear {
+  animation: rewardAppear 200ms ease-out forwards;
+}
+
+/* Sparkle particles */
+@keyframes sparkle {
+  0% {
+    opacity: 1;
+    transform: translate(0, 0) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(var(--sparkle-x, 20px), var(--sparkle-y, -30px)) scale(0);
+  }
+}
+
+.sparkle {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  pointer-events: none;
+  animation: sparkle 500ms ease-out forwards;
+}
+
+.sparkle-1 {
+  --sparkle-x: -25px;
+  --sparkle-y: -35px;
+  animation-delay: 0ms;
+}
+
+.sparkle-2 {
+  --sparkle-x: 30px;
+  --sparkle-y: -40px;
+  animation-delay: 50ms;
+}
+
+.sparkle-3 {
+  --sparkle-x: -15px;
+  --sparkle-y: -50px;
+  animation-delay: 100ms;
+}
+
+.sparkle-4 {
+  --sparkle-x: 25px;
+  --sparkle-y: -30px;
+  animation-delay: 80ms;
+}
+
+.sparkle-5 {
+  --sparkle-x: 0px;
+  --sparkle-y: -45px;
+  animation-delay: 30ms;
+}
+
+/* Star SVG for sparkles */
+.sparkle-star {
+  fill: #FFD700;
+  filter: drop-shadow(0 0 2px rgba(255, 215, 0, 0.8));
+}
+
+/* -----------------------------------------------------------------------------
+   ACCESSIBILITY - Respect reduced motion preference
+   ----------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  
+  .animate-fade-slide-up,
+  .animate-mascot-pop,
+  .animate-reward-appear {
+    opacity: 1;
+    transform: none;
+  }
+  
+  .progress-shine {
+    display: none;
+  }
+}

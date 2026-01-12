@@ -1,4 +1,5 @@
 import type { FC } from 'react';
+import { useProgressBar } from '../hooks/useAnimations';
 
 interface CurrentTrainingCardProps {
   methodName?: string;
@@ -15,7 +16,7 @@ const CurrentTrainingCard: FC<CurrentTrainingCardProps> = ({
   className = "",
   onClick,
 }) => {
-  const progressPercentage = Math.min((currentWorkouts / maxWorkouts) * 100, 100);
+  const { percentage, showShine, progressRef } = useProgressBar(currentWorkouts, maxWorkouts);
 
   return (
     <div className={`flex flex-col w-full ${className}`}>
@@ -71,12 +72,16 @@ const CurrentTrainingCard: FC<CurrentTrainingCardProps> = ({
             <div className="relative w-full h-3.5 mt-1">
               <div className="absolute inset-0 bg-neutral-700 rounded-[30px]" />
               <div
-                className="absolute top-0 left-0 h-full rounded-[30px]"
+                ref={progressRef}
+                className={`absolute top-0 left-0 h-full rounded-[30px] progress-bar-animated ${showShine ? 'progress-glow' : ''}`}
                 style={{
-                  width: `${progressPercentage}%`,
+                  width: `${percentage}%`,
                   background: 'linear-gradient(to bottom, #FB923C, #EA580C)'
                 }}
-              />
+              >
+                {/* Shine overlay */}
+                {showShine && <div className="progress-shine" />}
+              </div>
               <span className="absolute inset-0 flex items-center justify-center text-white text-sm font-extrabold font-['Baloo_2']">
                 {currentWorkouts}/{maxWorkouts} Workouts
               </span>
@@ -89,3 +94,4 @@ const CurrentTrainingCard: FC<CurrentTrainingCardProps> = ({
 };
 
 export default CurrentTrainingCard;
+

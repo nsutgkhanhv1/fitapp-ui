@@ -5,6 +5,7 @@ import PetLevelCard from '../components/PetLevelCard';
 import IconButtonRow from '../components/IconButtonRow';
 import ChatBubble from '../components/ChatBubble';
 import ButtonWithIcon from '../components/ButtonWithIcon';
+import { useStaggeredAppear } from '../hooks/useAnimations';
 
 
 // Workout Icon for button
@@ -13,6 +14,8 @@ const WorkoutIcon = () => (
 );
 
 const DashboardPage = () => {
+  const { getAnimationClass } = useStaggeredAppear(5);
+
   return (
     <div className={`w-full h-full max-w-md bg-ui-yellow flex flex-col overflow-hidden`}>
       {/* Header */}
@@ -21,14 +24,16 @@ const DashboardPage = () => {
       {/* Main Content Area */}
       <div className="flex-1 p-4 flex flex-col gap-2.5 overflow-y-auto">
         {/* Current Training Method Card */}
-        <CurrentTrainingCard
-          methodName="FIIT Mode"
-          currentWorkouts={3}
-          maxWorkouts={5}
-        />
+        <div className={getAnimationClass(0)}>
+          <CurrentTrainingCard
+            methodName="FIIT Mode"
+            currentWorkouts={3}
+            maxWorkouts={5}
+          />
+        </div>
 
         {/* Weight and Daily Missions Side by Side */}
-        <div className="flex gap-2.5">
+        <div className={`flex gap-2.5 ${getAnimationClass(1)}`}>
           <StatCard
             variant="weight"
             value="67.5"
@@ -44,13 +49,17 @@ const DashboardPage = () => {
         </div>
 
         {/* Pet Level Card */}
-        <PetLevelCard
-          level={5}
-          currentExp={300}
-          maxExp={500}
-        />
+        <div className={getAnimationClass(2)}>
+          <PetLevelCard
+            level={5}
+            currentExp={300}
+            maxExp={500}
+          />
+        </div>
 
-        <IconButtonRow />
+        <div className={getAnimationClass(3)}>
+          <IconButtonRow />
+        </div>
       </div>
 
       <div className="h-fit flex relative">
@@ -63,11 +72,11 @@ const DashboardPage = () => {
             <img
               src="/mascot-dashboard.png"
               alt="Shiba"
-              className="w-32 h-28 object-contain"
+              className="w-32 h-28 object-contain animate-mascot-pop"
             />
           </div>
 
-          <div className="flex-1 p-2 flex flex-col justify-end items-center gap-2.5 overflow-hidden">
+          <div className={`flex-1 p-2 flex flex-col justify-end items-center gap-2.5 overflow-hidden ${getAnimationClass(4)}`}>
             <ChatBubble
               message="Tập luyện ngay với tôi nhé!"
               className="w-full"
@@ -85,3 +94,4 @@ const DashboardPage = () => {
 };
 
 export default DashboardPage;
+
