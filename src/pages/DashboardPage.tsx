@@ -4,8 +4,9 @@ import StatCard from '../components/StatCard';
 import PetLevelCard from '../components/PetLevelCard';
 import IconButtonRow from '../components/IconButtonRow';
 import ChatBubble from '../components/ChatBubble';
-import ButtonWithIcon from '../components/ButtonWithIcon';
+import { CommonButton } from '../components/common/CommonButton';
 import { useStaggeredAppear } from '../hooks/useAnimations';
+import { useLocation } from 'wouter';
 
 
 // Workout Icon for button
@@ -15,6 +16,7 @@ const WorkoutIcon = () => (
 
 const DashboardPage = () => {
   const { getAnimationClass } = useStaggeredAppear(5);
+  const [,navigate] = useLocation();
 
   return (
     <div className={`w-full h-full max-w-md bg-ui-yellow flex flex-col overflow-hidden`}>
@@ -45,6 +47,7 @@ const DashboardPage = () => {
             current={1}
             max={3}
             className="flex-1"
+            onButtonClick={() => navigate('/missions')}
           />
         </div>
 
@@ -58,7 +61,7 @@ const DashboardPage = () => {
         </div>
 
         <div className={getAnimationClass(3)}>
-          <IconButtonRow />
+          <IconButtonRow onChatClick={() => navigate('/chat')} />
         </div>
       </div>
 
@@ -67,7 +70,7 @@ const DashboardPage = () => {
           <div className="h-[5px] bg-orange-300" />
         </div>
 
-        <div className="z-10 inset-0 flex">
+        <div className="z-10 inset-0 flex flex-1">
           <div className="w-32 h-full flex items-end">
             <img
               src="/mascot-dashboard.png"
@@ -82,9 +85,13 @@ const DashboardPage = () => {
               className="w-full"
             />
 
-            <ButtonWithIcon
-              label="Create workout"
-              icon={<WorkoutIcon />}
+            <CommonButton
+              text="Create workout"
+              addon={<WorkoutIcon />}
+              onClick={() => navigate('/create-session')}
+              disableDefaultPadding
+              className='w-full'
+              formButton
             />
           </div>
         </div>

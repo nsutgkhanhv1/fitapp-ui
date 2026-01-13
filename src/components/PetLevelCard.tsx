@@ -15,7 +15,7 @@ const PetLevelCard: FC<PetLevelCardProps> = ({
   maxExp = 500,
   className = "",
 }) => {
-  const { percentage, showShine, progressRef } = useProgressBar(currentExp, maxExp);
+  const { animatedPercentage, showShine, progressRef } = useProgressBar(currentExp, maxExp);
 
   return (
     <div
@@ -49,7 +49,7 @@ const PetLevelCard: FC<PetLevelCardProps> = ({
               ref={progressRef}
               className={`absolute top-0 left-0 h-full rounded-[30px] progress-bar-animated ${showShine ? 'progress-glow' : ''}`}
               style={{
-                width: `${percentage}%`,
+                width: `${animatedPercentage}%`,
                 background: 'linear-gradient(to bottom, #FF9D55, #FF5500)'
               }}
             >

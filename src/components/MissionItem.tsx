@@ -1,5 +1,5 @@
 import { cn } from '@/lib/utils';
-import type { FC, ReactNode } from 'react';
+import { useState, type FC, type ReactNode } from 'react';
 
 interface MissionItemProps {
   title?: string;
@@ -24,6 +24,8 @@ const MissionItem: FC<MissionItemProps> = ({
   onClick,
   className = "",
 }) => {
+  const [isPressed, setIsPressed] = useState(false);
+
   // Default done icon (checkmark)
   const defaultDoneIcon = (
     <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" className="size-full">
@@ -42,11 +44,28 @@ const MissionItem: FC<MissionItemProps> = ({
   return (
     <button
       onClick={onClick}
+      onMouseDown={() => setIsPressed(true)}
+      onMouseUp={() => setIsPressed(false)}
+      onMouseLeave={() => setIsPressed(false)}
+      onTouchStart={() => setIsPressed(true)}
+      onTouchEnd={() => setIsPressed(false)}
       className={`flex items-start w-full ${className}`}
+      style={{
+        transition: 'transform 120ms ease-out',
+        transform: isPressed ? 'scale(0.98)' : 'scale(1)',
+      }}
     >
       <div
         className={cn(["relative flex items-center gap-px w-full py-1 px-3 rounded-full border border-solid", done ? 'bg-linear-to-r from-green-start to-green-end border-[#1BFF36]' : 'bg-ui-white border-card-border'
         ])}
+        style={{
+          transition: 'box-shadow 120ms ease-out',
+          boxShadow: isPressed && done 
+            ? '0 0 12px 2px rgba(27, 255, 54, 0.3)' 
+            : isPressed 
+              ? '0 0 8px 2px rgba(252, 117, 18, 0.2)' 
+              : 'none',
+        }}
       >
         {/* Icon */}
         {icon && (
@@ -67,7 +86,13 @@ const MissionItem: FC<MissionItemProps> = ({
             {doneIcon || defaultDoneIcon}
           </div>
         ) : (
-          <div className="flex items-center justify-center shrink-0 size-3">
+          <div 
+            className="flex items-center justify-center shrink-0 size-3"
+            style={{
+              transition: 'transform 120ms ease-out',
+              transform: isPressed ? 'translateX(2px)' : 'translateX(0)',
+            }}
+          >
             {expandIcon || defaultExpandIcon}
           </div>
         )}
@@ -80,3 +105,4 @@ const MissionItem: FC<MissionItemProps> = ({
 };
 
 export default MissionItem;
+

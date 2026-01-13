@@ -53,25 +53,55 @@ export function useStaggeredAppear(itemCount: number): {
 
 /**
  * Hook for animated progress bar with shine effect
+ * Animates from 0% to target on mount, and shows shine on value increase
  */
 export function useProgressBar(
   currentValue: number,
-  maxValue: number
+  maxValue: number,
+  animationDelay: number = 300
 ): {
   percentage: number;
+  animatedPercentage: number;
   showShine: boolean;
   progressRef: React.RefObject<HTMLDivElement | null>;
 } {
   const [showShine, setShowShine] = useState(false);
+  const [animatedPercentage, setAnimatedPercentage] = useState(0);
   const previousValue = useRef(currentValue);
   const progressRef = useRef<HTMLDivElement | null>(null);
   const prefersReducedMotion = usePrefersReducedMotion();
+  const hasMounted = useRef(false);
 
   const percentage = Math.min((currentValue / maxValue) * 100, 100);
 
+  // Animate from 0 to percentage on mount
   useEffect(() => {
-    // Trigger shine when value increases
-    if (currentValue > previousValue.current && !prefersReducedMotion) {
+    if (prefersReducedMotion) {
+      setAnimatedPercentage(percentage);
+      return;
+    }
+
+    // Initial mount animation
+    if (!hasMounted.current) {
+      hasMounted.current = true;
+      const timer = setTimeout(() => {
+        setAnimatedPercentage(percentage);
+        // Show shine after animation completes
+        setTimeout(() => {
+          setShowShine(true);
+          setTimeout(() => setShowShine(false), 450);
+        }, 300);
+      }, animationDelay);
+      return () => clearTimeout(timer);
+    }
+
+    // Subsequent value changes
+    setAnimatedPercentage(percentage);
+  }, [percentage, prefersReducedMotion, animationDelay]);
+
+  useEffect(() => {
+    // Trigger shine when value increases (after mount)
+    if (hasMounted.current && currentValue > previousValue.current && !prefersReducedMotion) {
       setShowShine(true);
       const timer = setTimeout(() => setShowShine(false), 450);
       previousValue.current = currentValue;
@@ -80,7 +110,7 @@ export function useProgressBar(
     previousValue.current = currentValue;
   }, [currentValue, prefersReducedMotion]);
 
-  return { percentage, showShine, progressRef };
+  return { percentage, animatedPercentage, showShine, progressRef };
 }
 
 /**

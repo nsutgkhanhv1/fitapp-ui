@@ -2,8 +2,10 @@ import Header from '../components/Header';
 import SectionHeader from '../components/SectionHeader';
 import PictureCard from '../components/PictureCard';
 import MissionItem from '../components/MissionItem';
-import ButtonWithIcon from '../components/ButtonWithIcon';
+import { CommonButton } from '../components/common/CommonButton';
 import ChatBubble from '@/components/ChatBubble';
+import { useStaggeredAppear } from '../hooks/useAnimations';
+import { navigate } from 'wouter/use-browser-location';
 
 
 
@@ -20,6 +22,8 @@ const SmallCharacterIcon = () => (
 );
 
 const MissionPage = () => {
+  const { getAnimationClass } = useStaggeredAppear(8);
+
   return (
     <div className={`w-full h-full max-w-md bg-ui-yellow flex flex-col overflow-hidden`}>
       <Header title="Mission" showBack />
@@ -29,7 +33,7 @@ const MissionPage = () => {
           style={{
             boxShadow: '0 2px 1px 0 rgba(142, 178, 255, 0.90) inset, 0px 2px 4px 0px rgba(0,0,0,0.25), 0 -5px 1px 0 rgba(32, 44, 124, 0.25) inset',
           }}
-          className="relative border border-t-0 border-[#1D65A9] w-full bg-linear-to-r from-section-header-start to-section-header-end px-1.5 py-3 rounded-[20px] flex flex-col gap-1 items-center justify-center"
+          className={`relative border border-t-0 border-[#1D65A9] w-full bg-linear-to-r from-section-header-start to-section-header-end px-1.5 py-3 rounded-[20px] flex flex-col gap-1 items-center justify-center ${getAnimationClass(0)}`}
         >
           <div className='flex gap-2 w-full px-3 py-1'>
             <img src="/mission-icon.png" className='w-9 h-9' />
@@ -67,37 +71,47 @@ const MissionPage = () => {
           </div>
         </div>
 
-        <SectionHeader title="Weekly Mission (0/4)" />
+        <div className={getAnimationClass(1)}>
+          <SectionHeader title="Weekly Mission (0/4)" />
+        </div>
 
         <div className="flex-1 flex flex-col gap-1">
-          <MissionItem
-            title="Update Body Progress"
-            current={0}
-            total={1}
-            icon={<SmallCharacterIcon />}
-            done={false}
-          />
-          <MissionItem
-            title="Upload Your Meal Photo"
-            current={5}
-            total={5}
-            icon={<SmallCharacterIcon />}
-            done={true}
-          />
-          <MissionItem
-            title="Upload Your Workout pic"
-            current={0}
-            total={3}
-            icon={<SmallCharacterIcon />}
-            done={false}
-          />
-          <MissionItem
-            title="Level Up your Pet"
-            current={0}
-            total={1}
-            icon={<SmallCharacterIcon />}
-            done={false}
-          />
+          <div className={getAnimationClass(2)}>
+            <MissionItem
+              title="Update Body Progress"
+              current={0}
+              total={1}
+              icon={<SmallCharacterIcon />}
+              done={false}
+            />
+          </div>
+          <div className={getAnimationClass(3)}>
+            <MissionItem
+              title="Upload Your Meal Photo"
+              current={5}
+              total={5}
+              icon={<SmallCharacterIcon />}
+              done={true}
+            />
+          </div>
+          <div className={getAnimationClass(4)}>
+            <MissionItem
+              title="Upload Your Workout pic"
+              current={0}
+              total={3}
+              icon={<SmallCharacterIcon />}
+              done={false}
+            />
+          </div>
+          <div className={getAnimationClass(5)}>
+            <MissionItem
+              title="Level Up your Pet"
+              current={0}
+              total={1}
+              icon={<SmallCharacterIcon />}
+              done={false}
+            />
+          </div>
         </div>
       </div>
       <div className="relative h-fit flex">
@@ -105,24 +119,28 @@ const MissionPage = () => {
           <div className="h-[5px] bg-daily-mission" />
         </div>
 
-        <div className="z-10 inset-0 flex">
+        <div className="z-10 inset-0 flex flex-1">
           <div className="w-32 h-full flex items-end">
             <img
               src="/mascot-dashboard.png"
               alt="Shiba"
-              className="w-32 h-28 object-contain"
+              className="w-32 h-28 object-contain animate-mascot-pop"
             />
           </div>
 
-          <div className="flex-1 p-2 flex flex-col justify-end items-center gap-2.5 overflow-hidden">
+          <div className={`flex-1 p-2 flex flex-col justify-end items-center gap-2.5 overflow-hidden ${getAnimationClass(6)}`}>
             <ChatBubble
               message="Tập luyện ngay với tôi nhé!"
               className="w-full"
             />
 
-            <ButtonWithIcon
-              label="Create workout"
-              icon={<MissionsIcon />}
+            <CommonButton
+              text="Create workout"
+              addon={<MissionsIcon />}
+              className='w-full'
+              disableDefaultPadding
+              onClick={() => navigate('/create-session')}
+              formButton
             />
           </div>
         </div>
@@ -133,3 +151,4 @@ const MissionPage = () => {
 };
 
 export default MissionPage;
+

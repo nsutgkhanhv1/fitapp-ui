@@ -16,7 +16,7 @@ const CurrentTrainingCard: FC<CurrentTrainingCardProps> = ({
   className = "",
   onClick,
 }) => {
-  const { percentage, showShine, progressRef } = useProgressBar(currentWorkouts, maxWorkouts);
+  const { animatedPercentage, showShine, progressRef } = useProgressBar(currentWorkouts, maxWorkouts);
 
   return (
     <div className={`flex flex-col w-full ${className}`}>
@@ -75,7 +75,7 @@ const CurrentTrainingCard: FC<CurrentTrainingCardProps> = ({
                 ref={progressRef}
                 className={`absolute top-0 left-0 h-full rounded-[30px] progress-bar-animated ${showShine ? 'progress-glow' : ''}`}
                 style={{
-                  width: `${percentage}%`,
+                  width: `${animatedPercentage}%`,
                   background: 'linear-gradient(to bottom, #FB923C, #EA580C)'
                 }}
               >

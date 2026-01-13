@@ -1,6 +1,7 @@
 import ButtonWhite from '../components/ButtonWhite';
 import ChatBubble from '@/components/ChatBubble';
-import ButtonWithIcon from '@/components/ButtonWithIcon';
+import { CommonButton } from '@/components/common/CommonButton';
+import { useStaggeredAppear } from '../hooks/useAnimations';
 
 
 // Check icon for selected answer
@@ -25,10 +26,12 @@ const QuestionnairePage = () => {
     "E. Increase stamina"
   ];
 
+  const { getAnimationClass } = useStaggeredAppear(answers.length + 3);
+
   return (
     <div className={`w-full h-full bg-ui-white flex flex-col items-center overflow-hidden`}>
       {/* Question Header */}
-      <div className="w-full h-32 py-4 bg-ui-white flex flex-col justify-end items-center overflow-hidden">
+      <div className={`w-full h-32 py-4 bg-ui-white flex flex-col justify-end items-center overflow-hidden ${getAnimationClass(0)}`}>
         <h1 className="w-72 text-center font-['Baloo_2'] font-extrabold text-2xl text-black leading-tight">
           Let's get started!
         </h1>
@@ -41,13 +44,14 @@ const QuestionnairePage = () => {
       {/* Answer List */}
       <div className="flex-1 justify-center w-full px-4 flex flex-col gap-2.5">
         {answers.map((answer, index) => (
-          <ButtonWhite
-            key={index}
-            label={answer}
-            done={index === selectedAnswer}
-            icon={<CheckIcon />}
-            className="w-full"
-          />
+          <div key={index} className={getAnimationClass(index + 1)}>
+            <ButtonWhite
+              label={answer}
+              done={index === selectedAnswer}
+              icon={<CheckIcon />}
+              className="w-full"
+            />
+          </div>
         ))}
       </div>
 
@@ -65,22 +69,24 @@ const QuestionnairePage = () => {
             <img
               src="/coach-shiba.png"
               alt="Coach"
-              className="w-32 h-36 object-contain object-bottom"
+              className="w-32 h-36 object-contain object-bottom animate-mascot-pop"
             />
           </div>
 
           {/* Right Side - Hint Bubble and Next Button */}
-          <div className="flex-1 p-2 flex flex-col justify-end items-center gap-2.5 h-full">
+          <div className={`flex-1 p-2 flex flex-col justify-end items-center gap-2.5 h-full ${getAnimationClass(answers.length + 1)}`}>
             <ChatBubble
               message="Choose one answer!"
               className="w-full"
             />
 
             {/* Next Button */}
-            <ButtonWithIcon
-              label="Next"
-              icon={<img src="/golden-star-icon.png" alt="" className="w-12 h-12 object-contain" />}
+            <CommonButton
+              text="Next"
+              addon={<img src="/golden-star-icon.png" alt="" className="w-12 h-12 object-contain" />}
               className="w-full"
+              disableDefaultPadding
+              formButton
             />
           </div>
         </div>

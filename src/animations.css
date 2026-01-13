@@ -88,6 +88,11 @@
   pointer-events: none;
 }
 
+.animate-shine {
+  animation: progressShine 400ms ease-out forwards;
+  pointer-events: none;
+}
+
 /* Subtle glow effect for progress updates */
 @keyframes progressGlow {
   0% {

@@ -1,7 +1,8 @@
 import Header from '../components/Header';
 import ChatMessage from '../components/ChatMessage';
-import ButtonNoIcon from '../components/ButtonNoIcon';
+import { CommonButton } from '../components/common/CommonButton';
 import IconButton from '../components/IconButton';
+import { useStaggeredAppear } from '../hooks/useAnimations';
 
 // Camera icon for the camera button
 const CameraIcon = () => (
@@ -12,6 +13,8 @@ const CameraIcon = () => (
 );
 
 const ChatScreen = () => {
+  const { getAnimationClass } = useStaggeredAppear(6);
+
   return (
     <div className={`w-full h-full bg-ui-yellow flex flex-col overflow-hidden`}>
       {/* Header */}
@@ -20,34 +23,42 @@ const ChatScreen = () => {
       {/* Chat Messages Area */}
       <div className="flex-1 p-4 flex flex-col gap-2 overflow-auto">
         {/* Message from other user */}
-        <ChatMessage
-          message="User have good health today"
-          owned={false}
-        />
+        <div className={getAnimationClass(0)}>
+          <ChatMessage
+            message="User have good health today"
+            owned={false}
+          />
+        </div>
 
         {/* Message from current user (owned) */}
-        <ChatMessage
-          message="User have good health today"
-          owned={true}
-        />
+        <div className={getAnimationClass(1)}>
+          <ChatMessage
+            message="User have good health today"
+            owned={true}
+          />
+        </div>
 
         {/* Message from other user with image */}
-        <ChatMessage
-          message="User have good health today"
-          owned={false}
-          showImage={true}
-        />
+        <div className={getAnimationClass(2)}>
+          <ChatMessage
+            message="User have good health today"
+            owned={false}
+            showImage={true}
+          />
+        </div>
 
         {/* Message from current user with image */}
-        <ChatMessage
-          message="User have good health today"
-          owned={true}
-          showImage={true}
-        />
+        <div className={getAnimationClass(3)}>
+          <ChatMessage
+            message="User have good health today"
+            owned={true}
+            showImage={true}
+          />
+        </div>
       </div>
 
       {/* Bottom Input Bar */}
-      <div className="h-16 p-2.5 bg-ui-navy flex items-center gap-1 overflow-hidden">
+      <div className={`h-16 p-2.5 bg-ui-navy flex items-center gap-1 overflow-hidden ${getAnimationClass(4)}`}>
         {/* Text Input */}
         <div className="relative flex-1 h-9 bg-ui-white rounded-full border border-solid border-card-border">
           <div className="flex items-center w-full h-full px-3">
@@ -62,9 +73,11 @@ const ChatScreen = () => {
         </div>
 
         {/* Send Button */}
-        <ButtonNoIcon
-          label="Send"
+        <CommonButton
+          text="Send"
           className="h-10 px-4"
+          disableDefaultPadding
+          formButton
         />
 
         {/* Camera Button */}

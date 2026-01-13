@@ -1,9 +1,10 @@
 import { useState } from 'react';
 import Header from '../components/Header';
 import ChatBubble from '../components/ChatBubble';
-import ButtonWithIcon from '../components/ButtonWithIcon';
+import { CommonButton } from '../components/common/CommonButton';
 import StepSlider from '@/components/StepSlider';
 import IconButton from '@/components/IconButton';
+import { useStaggeredAppear } from '../hooks/useAnimations';
 
 // Workout Icon for button
 const WorkoutIcon = () => (
@@ -47,6 +48,7 @@ const KeyboardIcon = () => (
 const CreateWorkoutSession = () => {
   const [duration, setDuration] = useState(60);
   const steps = [0, 15, 30, 45, 60, 75, 90, 105, 120];
+  const { getAnimationClass } = useStaggeredAppear(4);
 
   return (
     <div className="w-full h-full max-w-md bg-ui-yellow flex flex-col overflow-hidden">
@@ -57,7 +59,7 @@ const CreateWorkoutSession = () => {
           style={{
             boxShadow: '0 2px 1px 0 rgba(142, 178, 255, 0.90) inset, 0px 2px 4px 0px rgba(0,0,0,0.25), 0 -5px 1px 0 rgba(32, 44, 124, 0.25) inset',
           }}
-          className="relative w-full bg-linear-to-r from-section-header-start to-section-header-end px-1 pb-2 rounded-[20px] flex flex-col gap-1"
+          className={`relative w-full bg-linear-to-r from-section-header-start to-section-header-end px-1 pb-2 rounded-[20px] flex flex-col gap-1 ${getAnimationClass(0)}`}
         >
           <div className="flex items-center justify-between w-full px-3 pt-1">
             <div className="flex items-center gap-2">
@@ -109,7 +111,7 @@ const CreateWorkoutSession = () => {
         </div>
 
         <div
-          className="bg-ui-white rounded-[20px] flex flex-col gap-3"
+          className={`bg-ui-white rounded-[20px] flex flex-col gap-3 ${getAnimationClass(1)}`}
           style={{
             boxShadow: '0px 2px 4px 0px rgba(0,0,0,0.15), inset 0px -3px 1px 0px rgba(183, 133, 90, 0.15)',
             border: '1px solid #E5DDD0'
@@ -120,9 +122,12 @@ const CreateWorkoutSession = () => {
           </div>
 
           <div className="flex items-center justify-center gap-3">
-            <ButtonWithIcon
-              label="Record"
-              icon={<MicIcon />}
+            <CommonButton
+              text="Record"
+              className='px-4 py-1.5'
+              addon={<MicIcon />}
+              disableDefaultPadding
+              formButton
             />
 
             <IconButton
@@ -149,24 +154,27 @@ const CreateWorkoutSession = () => {
           <div className="h-[5px] bg-daily-mission" />
         </div>
 
-        <div className="z-10 inset-0 flex">
+        <div className="z-10 inset-0 flex flex-1">
           <div className="w-32 h-full flex items-end">
             <img
               src="/mascot-dashboard.png"
               alt="Shiba"
-              className="w-32 h-28 object-contain"
+              className="w-32 h-28 object-contain animate-mascot-pop"
             />
           </div>
 
-          <div className="flex-1 p-2 flex flex-col justify-end items-center gap-2.5 overflow-hidden">
+          <div className={`flex-1 p-2 flex flex-col justify-end items-center gap-2.5 overflow-hidden ${getAnimationClass(2)}`}>
             <ChatBubble
               message="Tell me if you need any adjustment!"
               className="w-full"
             />
 
-            <ButtonWithIcon
-              label="Start Workout!!!"
-              icon={<WorkoutIcon />}
+            <CommonButton
+              text="Start Workout!!!"
+              addon={<WorkoutIcon />}
+              className='w-full'
+              disableDefaultPadding
+              formButton
             />
           </div>
         </div>
