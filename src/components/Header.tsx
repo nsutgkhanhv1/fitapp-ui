@@ -11,7 +11,6 @@ interface HeaderProps {
 const Header: FC<HeaderProps> = ({
   title = "GAME TITLE",
   showBack = false,
-  onBack,
   onNotification,
   className = "",
 }) => {
@@ -22,7 +21,7 @@ const Header: FC<HeaderProps> = ({
       <div className="flex items-center justify-center w-full px-6 gap-2.5">
         {showBack && (
           <button
-            onClick={onBack}
+            onClick={() => history.back()}
             className="shrink-0 size-6 flex items-center justify-center font-['Baloo_2'] font-normal text-2xl text-black"
           >
             ‹
