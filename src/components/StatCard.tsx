@@ -1,4 +1,5 @@
 import type { FC } from 'react';
+import { CommonButton } from './common/CommonButton';
 
 interface StatCardProps {
   variant: 'weight' | 'missions';
@@ -81,24 +82,14 @@ const StatCard: FC<StatCardProps> = ({
 
         {/* Button Row */}
         <div className="pt-[5px] pb-2.5 border-t border-[#E6E1D7] flex justify-center">
-          <button
+          <CommonButton
+            className="relative h-5 px-2.5 flex items-center justify-center text-xs text-white w-fit font-extrabold font-['Baloo_2']"
+            text={buttonLabel || defaultButtonLabel}
             onClick={onButtonClick}
-            className="relative h-5 px-2.5 flex items-center justify-center"
-          >
-            {/* Background */}
-            <div
-              style={{ boxShadow: '0px 2px 2px 0px rgba(0,0,0,0.60), 0 0.99px 0.5px 0 #FFC68F inset, 0 -1.49px 0.5px 0 #00000025 inset' }}
-              className="absolute inset-0 rounded-full overflow-hidden bg-linear-to-r from-button-start to-button-end"
-            >
-            </div>
-            {/* Label */}
-            <span
-              className="relative text-white text-xs font-extrabold font-['Baloo_2']"
-              style={{ textShadow: '0px 0px 0px rgba(0,0,0,0.50)' }}
-            >
-              {buttonLabel || defaultButtonLabel}
-            </span>
-          </button>
+            disableDefaultPadding
+            formButton
+            disableDefaultText
+          />
         </div>
       </div>
     </div>

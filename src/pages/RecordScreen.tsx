@@ -1,7 +1,6 @@
 import type { FC } from 'react';
-import ButtonNoIcon from '../components/ButtonNoIcon';
+import { CommonButton } from '../components/common/CommonButton';
 import ChatBubble from '@/components/ChatBubble';
-import ButtonWithIcon from '@/components/ButtonWithIcon';
 
 // Import assets
 
@@ -122,10 +121,12 @@ const RecordScreen = () => {
               message="Tell me your answer"
               className="w-full"
             />
-            <ButtonWithIcon
-              label="Record"
-              icon={<img src="/mic-sticker.png" alt="Mic" className="w-12 h-12 object-contain" />}
+            <CommonButton
+              text="Record"
+              addon={<img src="/mic-sticker.png" alt="Mic" className="w-12 h-12 object-contain" />}
               className="w-full"
+              disableDefaultPadding
+              formButton
             />
           </div>
         </div>

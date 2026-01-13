@@ -1,4 +1,4 @@
-import type { FC } from 'react';
+import { useState, type FC } from 'react';
 import { CircleCheck } from 'lucide-react'
 import { cn } from '@/lib/utils';
 
@@ -21,6 +21,8 @@ const PictureCard: FC<PictureCardProps> = ({
   overlayImageUrl = "https://placehold.co/280x200",
   className = "",
 }) => {
+  const [isButtonPressed, setIsButtonPressed] = useState(false);
+
   return (
     <div
       className={`relative flex-1 flex flex-col items-center rounded-2xl border border-solid shadow-card ${done ? 'bg-linear-to-r from-green-start to-green-end border-[#1BFF36]' : 'bg-ui-white border-card-border'
@@ -66,8 +68,19 @@ const PictureCard: FC<PictureCardProps> = ({
           <div className="flex items-start w-full py-1">
             <button
               type="button"
-              style={{ boxShadow: '0px 2px 2px 0px rgba(0,0,0,0.60), 0 0.99px 0.5px 0 #FFC68F inset, 0 -1.49px 0.5px 0 #00000025 inset' }}
+              style={{ 
+                boxShadow: isButtonPressed 
+                  ? '0px 1px 1px 0px rgba(0,0,0,0.40), 0 0.99px 0.5px 0 #FFC68F inset, 0 -1.49px 0.5px 0 #00000025 inset'
+                  : '0px 2px 2px 0px rgba(0,0,0,0.60), 0 0.99px 0.5px 0 #FFC68F inset, 0 -1.49px 0.5px 0 #00000025 inset',
+                transition: 'transform 120ms ease-out, box-shadow 120ms ease-out',
+                transform: isButtonPressed ? 'scale(0.96) translateY(1px)' : 'scale(1) translateY(0)',
+              }}
               onClick={onButtonClick}
+              onMouseDown={() => setIsButtonPressed(true)}
+              onMouseUp={() => setIsButtonPressed(false)}
+              onMouseLeave={() => setIsButtonPressed(false)}
+              onTouchStart={() => setIsButtonPressed(true)}
+              onTouchEnd={() => setIsButtonPressed(false)}
               className="flex-1 font-['Baloo_2'] font-extrabold rounded-full text-white py-1 text-xs text-center leading-3  bg-linear-to-r from-button-start to-button-end cursor-pointer"
             >
               {buttonText}
@@ -84,3 +97,4 @@ const PictureCard: FC<PictureCardProps> = ({
 };
 
 export default PictureCard;
+

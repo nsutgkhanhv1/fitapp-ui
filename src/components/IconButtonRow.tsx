@@ -1,6 +1,5 @@
 import { useState, type FC } from 'react';
 
-
 interface IconButtonRowProps {
   onChatClick?: () => void;
   onHistoryClick?: () => void;
@@ -28,6 +27,11 @@ const IconButtonRow: FC<IconButtonRowProps> = ({
   const handlers = [onChatClick, onHistoryClick, onFoodLogClick, onInventoryClick];
   const [pressedId, setPressedId] = useState<string | null>(null);
 
+  const handleClick = (index: number) => {
+    // Delay to allow press animation to be visible
+    setTimeout(() => handlers[index]?.(), 75);
+  };
+
   return (
     <div className={`w-full py-2.5 flex gap-[5px] ${className}`}>
       {buttons.map((button, index) => {
@@ -37,7 +41,7 @@ const IconButtonRow: FC<IconButtonRowProps> = ({
         return (
           <button
             key={button.id}
-            onClick={handlers[index]}
+            onClick={() => handleClick(index)}
             onMouseDown={() => setPressedId(button.id)}
             onMouseUp={() => setPressedId(null)}
             onMouseLeave={() => setPressedId(null)}
@@ -47,7 +51,8 @@ const IconButtonRow: FC<IconButtonRowProps> = ({
             style={{
               boxShadow: '0px 1.19px 2.39px 0px rgba(0,0,0,0.25), inset 0px -2.99px 0.6px 0px rgba(183,133,90,0.25)',
               outline: '0.6px solid #DAC39B',
-              transform: isPressed ? 'translateY(-4px) scale(0.96)' : 'translateY(0) scale(1)',
+              transform: isPressed ? 'translateY(2px) scale(0.96)' : 'translateY(0) scale(1)',
+              transition: 'transform 100ms ease-out',
             }}
           >
             {/* Icon Container */}
@@ -57,7 +62,7 @@ const IconButtonRow: FC<IconButtonRowProps> = ({
                 alt={button.label}
                 className="w-12 h-11 absolute left-1/2 -translate-x-1/2 -top-4 object-contain"
                 style={{
-                  transition: 'transform 120ms ease-out',
+                  transition: 'transform 100ms ease-out',
                   transform: isPressed ? 'scale(1.05)' : 'scale(1)',
                 }}
               />
@@ -76,4 +81,3 @@ const IconButtonRow: FC<IconButtonRowProps> = ({
 };
 
 export default IconButtonRow;
-

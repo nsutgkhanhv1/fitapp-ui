@@ -11,7 +11,7 @@ const ChatBubble: FC<ChatBubbleProps> = ({
 }) => {
   return (
     <div 
-      className={`relative flex items-center justify-center w-60 p-3 bg-ui-white border border-solid border-[#d7bd95] rounded-full shadow-card ${className}`}
+      className={`relative flex items-center justify-center p-3 bg-ui-white border border-solid border-[#d7bd95] rounded-full shadow-card ${className}`}
     >
       <p className="font-['Baloo_2'] font-extrabold text-sm text-text-muted text-center leading-4">
         {message}
