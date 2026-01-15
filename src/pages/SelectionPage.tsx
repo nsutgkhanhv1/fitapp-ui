@@ -1,6 +1,7 @@
 import { useLocation } from 'wouter';
 import { CommonButton } from '../components/common/CommonButton';
 import { useStaggeredAppear } from '../hooks/useAnimations';
+import ChatBubble from '@/components/ChatBubble';
 
 // Clipboard/Questionnaire icon
 const ClipboardIcon = () => (
@@ -129,18 +130,17 @@ const SelectionPage = () => {
           </div>
 
           <div className={`flex-1 p-2 flex flex-col justify-end items-center gap-2.5 h-full ${getAnimationClass(3)}`}>
-            <div className="w-full bg-ui-white rounded-2xl p-3 shadow-md">
-              <p className="font-['Baloo_2'] font-medium text-sm text-dark-text text-center">
-                Pick one to get started! 🎯
-              </p>
-            </div>
+            <ChatBubble
+              message="Pick one to get started! 🎯"
+              className="w-full"
+            />
 
             <CommonButton
               text="Skip for now"
-              className="w-full opacity-70"
-              disableDefaultPadding
-              formButton
               onClick={() => navigate('/dashboard')}
+              className='w-full'
+              disabled
+              formButton
             />
           </div>
         </div>

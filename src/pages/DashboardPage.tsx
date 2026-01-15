@@ -16,7 +16,7 @@ const WorkoutIcon = () => (
 
 const DashboardPage = () => {
   const { getAnimationClass } = useStaggeredAppear(5);
-  const [,navigate] = useLocation();
+  const [, navigate] = useLocation();
 
   return (
     <div className={`w-full h-full max-w-md bg-ui-yellow flex flex-col overflow-hidden`}>
@@ -40,7 +40,7 @@ const DashboardPage = () => {
             variant="weight"
             value="67.5"
             unit="Kg"
-            className="w-28"
+            className="flex-1"
           />
           <StatCard
             variant="missions"

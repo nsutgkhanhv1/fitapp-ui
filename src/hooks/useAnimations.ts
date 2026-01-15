@@ -30,6 +30,7 @@ export function useStaggeredAppear(itemCount: number): {
   getAnimationClass: (index: number) => string;
   isReady: boolean;
 } {
+  console.log(itemCount);
   const [isReady, setIsReady] = useState(false);
   const prefersReducedMotion = usePrefersReducedMotion();
 

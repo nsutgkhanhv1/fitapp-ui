@@ -6,6 +6,7 @@ import StepSlider from '@/components/StepSlider';
 import IconButton from '@/components/IconButton';
 import SoundWave from '@/components/SoundWave';
 import { useStaggeredAppear } from '../hooks/useAnimations';
+import { useLocation } from 'wouter';
 
 // Recording states
 type RecordingState = 'idle' | 'recording' | 'processing';
@@ -72,6 +73,7 @@ const CloseIcon = () => (
 );
 
 const CreateWorkoutSession = () => {
+  const [, navigate] = useLocation();
   const [duration, setDuration] = useState(60);
   const [recordingState, setRecordingState] = useState<RecordingState>('idle');
   const [inputMode, setInputMode] = useState<InputMode>('none');
@@ -369,6 +371,9 @@ const CreateWorkoutSession = () => {
             <CommonButton
               text="Start Workout!!!"
               addon={<WorkoutIcon />}
+              onClick={() => {
+                navigate("/get-ready")
+              }}
               className='w-full'
               disableDefaultPadding
               formButton

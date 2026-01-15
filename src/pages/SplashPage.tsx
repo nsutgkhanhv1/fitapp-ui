@@ -36,7 +36,7 @@ const SplashPage = () => {
   useEffect(() => {
     if (progress >= 100) {
       const timer = setTimeout(() => {
-        navigate('/questionnaire');
+        navigate('/selection');
       }, 500);
       return () => clearTimeout(timer);
     }

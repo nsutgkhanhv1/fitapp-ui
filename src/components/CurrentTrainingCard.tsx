@@ -25,7 +25,7 @@ const CurrentTrainingCard: FC<CurrentTrainingCardProps> = ({
         style={{
           boxShadow: '0 2px 1px 0 rgba(142, 178, 255, 0.90) inset, 0px 2px 4px 0px rgba(0,0,0,0.25), 0 -5px 1px 0 rgba(32, 44, 124, 0.25) inset',
         }}
-        className="relative border border-t-0 border-[#1D65A9] w-full bg-linear-to-r from-[#1D83E5] to-[#3EA3F7] px-1.5 pb-3 rounded-[20px] flex flex-col"
+        className="relative border border-t-0 border-[#1D65A9] w-full bg-linear-to-r from-section-header-start to-section-header-end px-1.5 pb-3 rounded-[20px] flex flex-col"
       >
         {/* Header */}
         <div className="h-[30px] px-3 flex items-center rounded-t-[20px]">
@@ -37,23 +37,19 @@ const CurrentTrainingCard: FC<CurrentTrainingCardProps> = ({
           </span>
         </div>
 
-        {/* White Content Area */}
         <div
           className="bg-ui-white rounded-2xl flex items-center"
           style={{ boxShadow: '0px 2px 2px 0px rgba(0,0,0,0.25), inset 0px 1px 0px 0px rgba(255,255,255,0.50)' }}
         >
-          {/* Character */}
           <div className="w-20 h-full relative overflow-visible flex items-center justify-center">
             <img
               src="/mascot-training-method.png"
               alt=""
-              className="w-full object-contain absolute -bottom-4 -left-4"
+              className="w-full object-contain absolute -bottom-12 -left-4"
             />
           </div>
 
-          {/* Content */}
           <div className="flex-1 p-1.5 flex flex-col items-center">
-            {/* Mode Name Row */}
             <div className="w-full flex items-center justify-between">
               <span className="text-zinc-800 text-title-01 font-extrabold font-['Baloo_2']">
                 {methodName}
