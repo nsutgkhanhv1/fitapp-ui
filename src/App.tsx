@@ -10,6 +10,8 @@ import CreateWorkoutSession from './pages/CreateWorkoutSession';
 import Layout from './components/Layout';
 import GetReadyPage from './pages/GetReadyPage';
 import ExerciseScreen from './pages/ExerciseScreen';
+import { useEffect } from 'react';
+import { emitter } from './utils/events';
 
 const App = () => {
   const [location] = useLocation();
@@ -26,6 +28,34 @@ const App = () => {
   //   return () => {};
   // }, [navigate]);
 
+    useEffect(() => {
+    let handleTriggerPWAPrompt = () => {};
+    // Capture the beforeinstallprompt event
+    const handleBeforeInstallPrompt = (e: Event) => {
+      e.preventDefault();
+      console.log("beforeinstallprompt fired:", e);
+
+      // setInstallPromptEvent(e);
+      handleTriggerPWAPrompt = () => {
+        console.log("PWA prompt triggered:", e);
+
+        if (e) {
+          console.log("Attempting to prompt PWA installation from App.tsx:", e);
+          (e as any).prompt();
+        } else {
+          console.log("Browser does not support PWA installation or criteria not met.");
+          alert("Browser does not support installation or criteria not met.");
+        }
+      };
+      emitter.on("triggerPWAPrompt", handleTriggerPWAPrompt);
+    };
+    window.addEventListener("beforeinstallprompt", handleBeforeInstallPrompt);
+
+    return () => {
+      window.removeEventListener("beforeinstallprompt", handleBeforeInstallPrompt);
+      emitter.off("triggerPWAPrompt", handleTriggerPWAPrompt);
+    };
+  }, []);
 
   return (
     <Layout key={location}>
