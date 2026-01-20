@@ -7,12 +7,7 @@ import ChatBubble from '../components/ChatBubble';
 import { CommonButton } from '../components/common/CommonButton';
 import { useStaggeredAppear } from '../hooks/useAnimations';
 import { useLocation } from 'wouter';
-
-
-// Workout Icon for button
-const WorkoutIcon = () => (
-  <img src="/flame-dumbbell-icon.png" className="w-12 h-11 scale-110 object-contain" style={{ filter: 'drop-shadow(0px 4px 4px rgba(0,0,0,0.25))' }} />
-);
+import { WorkoutIcon } from '@/components/icons';
 
 const DashboardPage = () => {
   const { getAnimationClass } = useStaggeredAppear(5);

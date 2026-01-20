@@ -7,70 +7,16 @@ import IconButton from '@/components/IconButton';
 import SoundWave from '@/components/SoundWave';
 import { useStaggeredAppear } from '../hooks/useAnimations';
 import { useLocation } from 'wouter';
-
-// Recording states
-type RecordingState = 'idle' | 'recording' | 'processing';
-type InputMode = 'none' | 'recording' | 'typing';
-
-// Workout Icon for button
-const WorkoutIcon = () => (
-  <img
-    src="/flame-dumbbell-icon.png"
-    className="w-12 h-11 scale-110 object-contain"
-    style={{ filter: 'drop-shadow(0px 4px 4px rgba(0,0,0,0.25))' }}
-  />
-);
-
-// Timer/Clock icon
-const TimerIcon = () => (
-  <img
-    src="/time-clock-icon.png"
-    alt="Duration"
-    className="w-8 h-8 object-contain"
-  />
-);
-
-// Microphone icon for record button
-const MicIcon = () => (
-  <img src="/mic-sticker.png" alt="Mic" className="w-10 h-10 object-contain" />
-);
-
-// Stop icon for recording
-const StopIcon = () => (
-  <div className="w-8 h-8 flex items-center justify-center">
-    <div className="w-5 h-5 bg-white rounded-sm" />
-  </div>
-);
-
-// Spinner icon for processing
-const SpinnerIcon = () => (
-  <div className="w-8 h-8 flex items-center justify-center">
-    <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
-  </div>
-);
-
-// Keyboard icon
-const KeyboardIcon = () => (
-  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <rect x="2" y="4" width="20" height="14" rx="2" stroke="#4F6280" strokeWidth="2" />
-    <rect x="5" y="7" width="2" height="2" rx="0.5" fill="#4F6280" />
-    <rect x="9" y="7" width="2" height="2" rx="0.5" fill="#4F6280" />
-    <rect x="13" y="7" width="2" height="2" rx="0.5" fill="#4F6280" />
-    <rect x="17" y="7" width="2" height="2" rx="0.5" fill="#4F6280" />
-    <rect x="5" y="11" width="2" height="2" rx="0.5" fill="#4F6280" />
-    <rect x="9" y="11" width="2" height="2" rx="0.5" fill="#4F6280" />
-    <rect x="13" y="11" width="2" height="2" rx="0.5" fill="#4F6280" />
-    <rect x="17" y="11" width="2" height="2" rx="0.5" fill="#4F6280" />
-    <rect x="7" y="15" width="10" height="2" rx="0.5" fill="#4F6280" />
-  </svg>
-);
-
-// Close icon
-const CloseIcon = () => (
-  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M18 6L6 18M6 6L18 18" stroke="#4F6280" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-  </svg>
-);
+import {
+  WorkoutIcon,
+  TimerIcon,
+  MicIcon,
+  StopIcon,
+  SpinnerIcon,
+  KeyboardIcon,
+  CloseIcon,
+} from '@/components/icons';
+import type { RecordingState, InputMode } from '@/types';
 
 const CreateWorkoutSession = () => {
   const [, navigate] = useLocation();

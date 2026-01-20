@@ -4,21 +4,7 @@ import ButtonWhite from '../components/ButtonWhite';
 import ChatBubble from '@/components/ChatBubble';
 import { CommonButton } from '@/components/common/CommonButton';
 import { useStaggeredAppear } from '../hooks/useAnimations';
-
-// Check icon for selected answer
-const CheckIcon = () => (
-  <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" className="size-full">
-    <path d="M7 8L10.258 10.444C10.677 10.757 11.266 10.696 11.611 10.302L18 3" stroke="#00B521" strokeWidth="2" strokeLinecap="round" />
-    <path d="M19 10C19 11.881 18.411 13.714 17.316 15.242C16.22 16.771 14.674 17.918 12.893 18.522C11.112 19.127 9.187 19.158 7.387 18.613C5.588 18.067 4.005 16.971 2.86 15.479C1.715 13.987 1.066 12.174 1.005 10.295C0.943 8.415 1.472 6.563 2.517 5C3.562 3.436 5.07 2.239 6.83 1.577C8.59 0.914 10.513 0.82 12.329 1.307" stroke="#00B521" strokeWidth="2" strokeLinecap="round" />
-  </svg>
-);
-
-// Arrow left icon for previous button
-const ArrowLeftIcon = () => (
-  <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-5 h-5">
-    <path d="M15 18L9 12L15 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-  </svg>
-);
+import { CheckIcon, ArrowLeftIcon, GoldenStarIcon } from '@/components/icons';
 
 // Questions data
 const questions = [
@@ -211,7 +197,7 @@ const QuestionnairePage = () => {
               {/* Next/Finish Button */}
               <CommonButton
                 text={getButtonText()}
-                addon={<img src="/golden-star-icon.png" alt="" className="w-12 h-12 object-contain" />}
+                addon={<GoldenStarIcon className="w-12 h-12" />}
                 className={`flex-1 ${!hasAnsweredCurrent ? 'opacity-50' : ''}`}
                 disableDefaultPadding
                 formButton

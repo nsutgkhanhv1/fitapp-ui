@@ -26,11 +26,10 @@ export function usePrefersReducedMotion(): boolean {
  * Hook for staggered appearance animations on page load
  * Returns animation class names for each item based on index
  */
-export function useStaggeredAppear(itemCount: number): {
+export function useStaggeredAppear(_itemCount: number): {
   getAnimationClass: (index: number) => string;
   isReady: boolean;
 } {
-  console.log(itemCount);
   const [isReady, setIsReady] = useState(false);
   const prefersReducedMotion = usePrefersReducedMotion();
 

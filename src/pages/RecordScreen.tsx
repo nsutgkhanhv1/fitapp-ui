@@ -4,16 +4,8 @@ import { CommonButton } from '../components/common/CommonButton';
 import ChatBubble from '@/components/ChatBubble';
 import SoundWave from '@/components/SoundWave';
 import { useStaggeredAppear } from '../hooks/useAnimations';
-
-// Recording states
-type RecordingState = 'idle' | 'recording' | 'processing' | 'completed';
-
-interface Question {
-  question: string;
-  example: string;
-  imageUrl: string;
-  imageFlipped: boolean;
-}
+import { MicIcon, StopIcon, SpinnerIcon, ArrowRightIcon } from '@/components/icons';
+import type { RecordingState, Question } from '@/types';
 
 interface QuestionCardProps {
   question: string;
@@ -245,29 +237,15 @@ const RecordScreen = () => {
   const getButtonIcon = () => {
     switch (recordingState) {
       case 'idle':
-        return <img src="/mic-sticker.png" alt="Mic" className="w-12 h-12 object-contain" />;
+        return <MicIcon className="w-12 h-12" />;
       case 'recording':
-        return (
-          <div className="w-10 h-10 flex items-center justify-center">
-            <div className="w-6 h-6 bg-white rounded-sm" />
-          </div>
-        );
+        return <StopIcon className="w-10 h-10" />;
       case 'processing':
-        return (
-          <div className="w-10 h-10 flex items-center justify-center">
-            <div className="w-6 h-6 border-2 border-white border-t-transparent rounded-full animate-spin" />
-          </div>
-        );
+        return <SpinnerIcon className="w-10 h-10" />;
       case 'completed':
-        return (
-          <div className="w-10 h-10 flex items-center justify-center">
-            <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M9 5l7 7-7 7" />
-            </svg>
-          </div>
-        );
+        return <ArrowRightIcon className="w-10 h-10" />;
       default:
-        return <img src="/mic-sticker.png" alt="Mic" className="w-12 h-12 object-contain" />;
+        return <MicIcon className="w-12 h-12" />;
     }
   };
 

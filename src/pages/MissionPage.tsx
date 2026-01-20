@@ -6,20 +6,7 @@ import { CommonButton } from '../components/common/CommonButton';
 import ChatBubble from '@/components/ChatBubble';
 import { useStaggeredAppear } from '../hooks/useAnimations';
 import { navigate } from 'wouter/use-browser-location';
-
-
-
-const MissionsIcon = () => (
-  <img src="/flame-dumbbell-icon.png" className="w-12 h-11 scale-110 object-contain" style={{ filter: 'drop-shadow(0px 4px 4px rgba(0,0,0,0.25))' }} />
-);
-
-const SmallCharacterIcon = () => (
-  <img
-    src="/target-sticker.png"
-    alt=""
-    className="w-8 h-6 object-cover object-top rounded-sm"
-  />
-);
+import { WorkoutIcon, GoldenStarIcon, TargetIcon, MissionIcon } from '@/components/icons';
 
 const MissionPage = () => {
   const { getAnimationClass } = useStaggeredAppear(8);
@@ -36,14 +23,14 @@ const MissionPage = () => {
           className={`relative border border-t-0 border-[#1D65A9] w-full bg-linear-to-r from-section-header-start to-section-header-end px-1.5 py-3 rounded-[20px] flex flex-col gap-1 items-center justify-center ${getAnimationClass(0)}`}
         >
           <div className='flex gap-2 w-full px-3 py-1'>
-            <img src="/mission-icon.png" className='w-9 h-9' />
+            <MissionIcon />
             <span
               className="text-white text-title-01 font-extrabold font-['Baloo_2']"
               style={{ textShadow: '0px 1px 1px rgba(0,0,0,0.50)' }}
             >
               Daily mission (1/3)
             </span>
-            <img src="/golden-star-icon.png" alt="" className="w-9 h-9" />
+            <GoldenStarIcon className="w-9 h-9" />
           </div>
           <div className='flex gap-1 items-start justify-center'>
             <PictureCard
@@ -81,7 +68,7 @@ const MissionPage = () => {
               title="Update Body Progress"
               current={0}
               total={1}
-              icon={<SmallCharacterIcon />}
+              icon={<TargetIcon />}
               done={false}
             />
           </div>
@@ -90,7 +77,7 @@ const MissionPage = () => {
               title="Upload Your Meal Photo"
               current={5}
               total={5}
-              icon={<SmallCharacterIcon />}
+              icon={<TargetIcon />}
               done={true}
             />
           </div>
@@ -99,7 +86,7 @@ const MissionPage = () => {
               title="Upload Your Workout pic"
               current={0}
               total={3}
-              icon={<SmallCharacterIcon />}
+              icon={<TargetIcon />}
               done={false}
             />
           </div>
@@ -108,7 +95,7 @@ const MissionPage = () => {
               title="Level Up your Pet"
               current={0}
               total={1}
-              icon={<SmallCharacterIcon />}
+              icon={<TargetIcon />}
               done={false}
             />
           </div>
@@ -136,7 +123,7 @@ const MissionPage = () => {
 
             <CommonButton
               text="Create workout"
-              addon={<MissionsIcon />}
+              addon={<WorkoutIcon />}
               className='w-full'
               disableDefaultPadding
               onClick={() => navigate('/create-session')}

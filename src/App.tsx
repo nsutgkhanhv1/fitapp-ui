@@ -16,20 +16,8 @@ import { emitter } from './utils/events';
 const App = () => {
   const [location] = useLocation();
 
-  //   useEffect(() => {
-  //   console.log("init BUILD_DATE", "BUILD_DATE");
-  //   const token = getLocalItem("@cali-pt/userToken");
-  //   if (!token) {
-  //     navigate("/");
-  //   } else {
-  //     // navigate("/members");
-  //   }
-
-  //   return () => {};
-  // }, [navigate]);
-
-    useEffect(() => {
-    let handleTriggerPWAPrompt = () => {};
+  useEffect(() => {
+    let handleTriggerPWAPrompt = () => { };
     // Capture the beforeinstallprompt event
     const handleBeforeInstallPrompt = (e: Event) => {
       e.preventDefault();
